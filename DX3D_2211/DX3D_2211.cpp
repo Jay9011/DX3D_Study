@@ -8,8 +8,19 @@
 
 // 전역 변수:
 HINSTANCE hInst;                                // 현재 인스턴스입니다.
+HWND hWnd;                                      // 윈도우 핸들
 WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
 WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
+
+ID3D11Device* device;   // CPU : 리소스 로드, 생성
+ID3D11DeviceContext* deviceContext; // GPU : 출력
+
+IDXGISwapChain* swapChain;  // 메모리의 백버퍼 관리
+ID3D11RenderTargetView* renderTargetView;   // VRAM에 할당되는 백버퍼 관리
+
+void InitDevice();
+void Render();
+void ReleaseDevice();
 
 // 이 코드 모듈에 포함된 함수의 선언을 전달합니다:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -42,6 +53,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     MSG msg = {}; // 구조체 초기화
 
+    InitDevice();
+
     // 기본 메시지 루프입니다:
     while (msg.message != WM_QUIT)
     {
@@ -55,14 +68,76 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
         else
         {
-
+            Render();
         }
     }
+
+    ReleaseDevice();
 
     return (int) msg.wParam;
 }
 
 
+
+void InitDevice()
+{
+    UINT width = WIN_WIDTH;
+    UINT height = WIN_HEIGTH;
+
+    DXGI_SWAP_CHAIN_DESC swapChainDesc = {};
+    swapChainDesc.BufferDesc.Width = width;
+    swapChainDesc.BufferDesc.Height = height;
+    swapChainDesc.BufferDesc.RefreshRate.Numerator = 60;
+    swapChainDesc.BufferDesc.RefreshRate.Denominator = 1;
+    // RefreshRate : 디스플레이 모드 갱신율(주사율 : Numerator / Denominator)
+    swapChainDesc.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+    swapChainDesc.SampleDesc.Count = 1;
+    swapChainDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
+    swapChainDesc.BufferCount = 1;
+    swapChainDesc.OutputWindow = hWnd;
+    swapChainDesc.Windowed = true;
+
+    D3D11CreateDeviceAndSwapChain(nullptr,
+        D3D_DRIVER_TYPE_HARDWARE,
+        0,
+        D3D11_CREATE_DEVICE_DEBUG,
+        nullptr,
+        0,
+        D3D11_SDK_VERSION,
+        &swapChainDesc,
+        &swapChain,
+        &device,
+        nullptr,
+        &deviceContext
+    );
+
+    ID3D11Texture2D* backBuffer;
+
+    swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (void**)&backBuffer);
+    device->CreateRenderTargetView(backBuffer, nullptr, &renderTargetView);
+    backBuffer->Release();
+
+    deviceContext->OMSetRenderTargets(1, &renderTargetView, nullptr);
+}
+
+void Render()
+{
+    float clearColor[4] = { 0.0f, 0.125f, 0.3f, 1.0f };
+    deviceContext->ClearRenderTargetView(renderTargetView, clearColor);
+
+    // Render
+
+    swapChain->Present(0, 0);
+}
+
+void ReleaseDevice()
+{
+    device->Release();
+    deviceContext->Release();
+
+    swapChain->Release();
+    renderTargetView->Release();
+}
 
 //
 //  함수: MyRegisterClass()
@@ -108,7 +183,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    AdjustWindowRect(&rc, WS_OVERLAPPEDWINDOW, false);
 
-   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+   hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0,
       rc.right - rc.left,
       rc.bottom - rc.top,
