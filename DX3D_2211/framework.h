@@ -13,3 +13,11 @@
 #include <d3d11.h>
 
 #pragma comment(lib, "d3d11.lib");
+
+// Framework Header
+#include "Framework/Device/Device.h"
+
+// Object Header
+
+// Scene Header
+#include "Scenes/Scene.h"
