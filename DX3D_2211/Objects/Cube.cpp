@@ -11,13 +11,19 @@ Cube::Cube(Float3 pos) :
 {
 }
 
-Cube::Cube(Float3 pos, float size)
+Cube::Cube(Float3 pos, float size) :
+	Cube(pos, size, 0.0001f)
+{
+}
+
+Cube::Cube(Float3 pos, float size, float speed) :
+	position(pos),
+	rotationSpeed(speed)
 {
 	vertexShader = Shader::AddVS(L"Shaders/Tutorial.hlsl");
 	pixelShader = Shader::AddPS(L"Shaders/Tutorial.hlsl");
 
 	SetVertex(size);
-	position = pos;
 
 	worldBuffer = new MatrixBuffer();
 }
@@ -32,9 +38,7 @@ Cube::~Cube()
 
 void Cube::Update()
 {
-	static float angle = 0.0f;
-
-	angle += 0.0001f;
+	angle += rotationSpeed;
 
 	world = XMMatrixRotationX(angle) * XMMatrixRotationY(angle);
 	world *= XMMatrixTranslation(position.x, position.y, position.z);

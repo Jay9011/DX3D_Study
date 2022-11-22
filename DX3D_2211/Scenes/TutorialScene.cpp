@@ -36,8 +36,8 @@ TutorialScene::TutorialScene()
 	//indexBuffer = new IndexBuffer(indices.data(), indices.size());
 
 	cubes.push_back(new Cube());
-	cubes.push_back(new Cube({-5.0f, 0.0f, 0.0f}, 0.3f));
-	cubes.push_back(new Cube({1.5f, 0.0f, 10.0f}, 1.0f));
+	cubes.push_back(new Cube({-5.0f, 0.0f, 0.0f}, 0.3f, 0.00015f));
+	cubes.push_back(new Cube({0.5f, -1.0f, 5.0f}, 2.0f, 0.0002f));
 
 	//worldBuffer = new MatrixBuffer();
 	viewBuffer = new MatrixBuffer();

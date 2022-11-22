@@ -6,6 +6,7 @@ public:
     Cube();
     Cube(Float3 pos);
     Cube(Float3 pos, float size);
+    Cube(Float3 pos, float size, float speed);
     ~Cube();
 
     void Update();
@@ -29,4 +30,6 @@ private:
     Matrix world;
 
     Float3 position;
+    float  rotationSpeed;
+    float  angle = 0.0f;
 };
