@@ -25,4 +25,7 @@ private:
 	vector<UINT> indices;
 
 	Matrix world;
+
+	// Å¥ºê
+	vector<Cube*> cubes;
 };

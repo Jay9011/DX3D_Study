@@ -26,9 +26,9 @@
 using namespace std;
 using namespace DirectX;
 
-typedef XMFLOAT4 Float4;
-typedef XMFLOAT3 Float3;
 typedef XMFLOAT2 Float2;
+typedef XMFLOAT3 Float3;
+typedef XMFLOAT4 Float4;
 typedef XMVECTOR Vector4;
 typedef XMMATRIX Matrix;
 typedef XMFLOAT4X4 Float4x4;
@@ -49,7 +49,7 @@ typedef XMFLOAT4X4 Float4x4;
 #include "Framework/Buffer/GlobalBuffer.h"
 
 //Object Header
-
+#include "Objects/Cube.h"
 
 //Scene Header
 #include "Scenes/Scene.h"

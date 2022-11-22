@@ -148,6 +148,7 @@
     <ClInclude Include="Framework\Shader\Shader.h" />
     <ClInclude Include="Framework\Shader\VertexShader.h" />
     <ClInclude Include="Framework\Utility\Singleton.h" />
+    <ClInclude Include="Objects\Cube.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Scenes\Scene.h" />
@@ -167,6 +168,7 @@
     <ClCompile Include="Framework\Shader\Shader.cpp" />
     <ClCompile Include="Framework\Shader\VertexShader.cpp" />
     <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="Objects\Cube.cpp" />
     <ClCompile Include="Scenes\TutorialScene.cpp" />
   </ItemGroup>
   <ItemGroup>
