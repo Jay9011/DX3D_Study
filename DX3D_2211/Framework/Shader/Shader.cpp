@@ -30,20 +30,6 @@ PixelShader* Shader::AddPS(wstring file)
     return (PixelShader*)shaders[key];
 }
 
-ComputeShader* Shader::AddCS(wstring file)
-{
-    if (file.length() == 0) return nullptr;
-
-    wstring key = file + L"CS";
-
-    if (shaders.count(key) > 0)
-        return (ComputeShader*)shaders[key];
-
-    shaders[key] = new ComputeShader(file);
-
-    return (ComputeShader*)shaders[key];
-}
-
 void Shader::Delete()
 {
     for (pair<wstring, Shader*> shader : shaders)

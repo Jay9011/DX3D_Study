@@ -1,28 +1,14 @@
-﻿// DX3D_2211.cpp : 애플리케이션에 대한 진입점을 정의합니다.
-//
-
-#include "framework.h"
+﻿#include "framework.h"
 #include "DX3D_2211.h"
 
 #define MAX_LOADSTRING 100
 
-// 전역 변수:
 HINSTANCE hInst;                                // 현재 인스턴스입니다.
-HWND hWnd;                                      // 윈도우 핸들
+HWND hWnd;
 WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
 WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
 
-ID3D11Device* device;   // CPU : 리소스 로드, 생성
-ID3D11DeviceContext* deviceContext; // GPU : 출력
 
-IDXGISwapChain* swapChain;  // 메모리의 백버퍼 관리
-ID3D11RenderTargetView* renderTargetView;   // VRAM에 할당되는 백버퍼 관리
-
-void InitDevice();
-void Render();
-void ReleaseDevice();
-
-// 이 코드 모듈에 포함된 함수의 선언을 전달합니다:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
@@ -51,11 +37,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_DX3D2211));
 
-    MSG msg = {}; // 구조체 초기화
+    MSG msg = {};
 
-    InitDevice();
+    GameManager* gameManager = new GameManager();
 
-    // 기본 메시지 루프입니다:
     while (msg.message != WM_QUIT)
     {
         if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
@@ -68,82 +53,16 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
         else
         {
-            Render();
+            gameManager->Update();
+            gameManager->Render();
         }
     }
 
-    ReleaseDevice();
+    delete gameManager;
 
     return (int) msg.wParam;
 }
 
-
-
-void InitDevice()
-{
-    UINT width = WIN_WIDTH;
-    UINT height = WIN_HEIGTH;
-
-    DXGI_SWAP_CHAIN_DESC swapChainDesc = {};
-    swapChainDesc.BufferDesc.Width = width;
-    swapChainDesc.BufferDesc.Height = height;
-    swapChainDesc.BufferDesc.RefreshRate.Numerator = 60;
-    swapChainDesc.BufferDesc.RefreshRate.Denominator = 1;
-    // RefreshRate : 디스플레이 모드 갱신율(주사율 : Numerator / Denominator)
-    swapChainDesc.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
-    swapChainDesc.SampleDesc.Count = 1;
-    swapChainDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
-    swapChainDesc.BufferCount = 1;
-    swapChainDesc.OutputWindow = hWnd;
-    swapChainDesc.Windowed = true;
-
-    D3D11CreateDeviceAndSwapChain(nullptr,
-        D3D_DRIVER_TYPE_HARDWARE,
-        0,
-        D3D11_CREATE_DEVICE_DEBUG,
-        nullptr,
-        0,
-        D3D11_SDK_VERSION,
-        &swapChainDesc,
-        &swapChain,
-        &device,
-        nullptr,
-        &deviceContext
-    );
-
-    ID3D11Texture2D* backBuffer;
-
-    swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (void**)&backBuffer);
-    device->CreateRenderTargetView(backBuffer, nullptr, &renderTargetView);
-    backBuffer->Release();
-
-    deviceContext->OMSetRenderTargets(1, &renderTargetView, nullptr);
-}
-
-void Render()
-{
-    float clearColor[4] = { 0.0f, 0.125f, 0.3f, 1.0f };
-    deviceContext->ClearRenderTargetView(renderTargetView, clearColor);
-
-    // Render
-
-    swapChain->Present(0, 0);
-}
-
-void ReleaseDevice()
-{
-    device->Release();
-    deviceContext->Release();
-
-    swapChain->Release();
-    renderTargetView->Release();
-}
-
-//
-//  함수: MyRegisterClass()
-//
-//  용도: 창 클래스를 등록합니다.
-//
 ATOM MyRegisterClass(HINSTANCE hInstance)
 {
     WNDCLASSEXW wcex;
@@ -179,15 +98,15 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
-   RECT rc = { 0, 0, WIN_WIDTH, WIN_HEIGTH };
+   RECT rc = { 0, 0, WIN_WIDTH, WIN_HEIGHT };
 
    AdjustWindowRect(&rc, WS_OVERLAPPEDWINDOW, false);
 
    hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0,
-      rc.right - rc.left,
-      rc.bottom - rc.top,
-      nullptr, nullptr, hInstance, nullptr);
+       rc.right - rc.left,
+       rc.bottom - rc.top,
+       nullptr, nullptr, hInstance, nullptr);
 
    SetMenu(hWnd, nullptr);
 
@@ -202,16 +121,6 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    return TRUE;
 }
 
-//
-//  함수: WndProc(HWND, UINT, WPARAM, LPARAM)
-//
-//  용도: 주 창의 메시지를 처리합니다.
-//
-//  WM_COMMAND  - 애플리케이션 메뉴를 처리합니다.
-//  WM_PAINT    - 주 창을 그립니다.
-//  WM_DESTROY  - 종료 메시지를 게시하고 반환합니다.
-//
-//
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
