@@ -13,7 +13,7 @@ public:
     void Render();
 
 private:
-    void SetVertex(float size);
+    void SetVertex();
 
 private:
     MatrixBuffer* worldBuffer;
@@ -29,7 +29,8 @@ private:
 
     Matrix world;
 
-    Float3 position;
+    float  scale;
     float  rotationSpeed;
     float  angle = 0.0f;
+    Float3 translation;
 };

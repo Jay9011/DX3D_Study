@@ -17,13 +17,14 @@ Cube::Cube(Float3 pos, float size) :
 }
 
 Cube::Cube(Float3 pos, float size, float speed) :
-	position(pos),
+	translation(pos),
+	scale(size),
 	rotationSpeed(speed)
 {
 	vertexShader = Shader::AddVS(L"Shaders/Tutorial.hlsl");
 	pixelShader = Shader::AddPS(L"Shaders/Tutorial.hlsl");
 
-	SetVertex(size);
+	SetVertex();
 
 	worldBuffer = new MatrixBuffer();
 }
@@ -40,8 +41,12 @@ void Cube::Update()
 {
 	angle += rotationSpeed;
 
-	world = XMMatrixRotationX(angle) * XMMatrixRotationY(angle);
-	world *= XMMatrixTranslation(position.x, position.y, position.z);
+	/*
+	* world SRT
+	*/
+	world = XMMatrixScaling(scale, scale, scale);
+	world *= XMMatrixRotationX(angle) * XMMatrixRotationY(angle);
+	world *= XMMatrixTranslation(translation.x, translation.y, translation.z);
 
 	worldBuffer->Set(world);
 }
@@ -59,17 +64,17 @@ void Cube::Render()
 	DC->DrawIndexed(indices.size(), 0, 0);
 }
 
-void Cube::SetVertex(float size)
+void Cube::SetVertex()
 {
-	vertices.emplace_back(-size, -size, -size, 1, 0, 0);
-	vertices.emplace_back(+size, -size, -size, 0, 1, 0);
-	vertices.emplace_back(+size, +size, -size, 0, 0, 1);
-	vertices.emplace_back(-size, +size, -size, 1, 1, 0);
+	vertices.emplace_back(-1.0f, -1.0f, -1.0f, 1, 0, 0);
+	vertices.emplace_back(+1.0f, -1.0f, -1.0f, 0, 1, 0);
+	vertices.emplace_back(+1.0f, +1.0f, -1.0f, 0, 0, 1);
+	vertices.emplace_back(-1.0f, +1.0f, -1.0f, 1, 1, 0);
 
-	vertices.emplace_back(-size, -size, +size, 1, 0, 0);
-	vertices.emplace_back(+size, -size, +size, 0, 1, 0);
-	vertices.emplace_back(+size, +size, +size, 0, 0, 1);
-	vertices.emplace_back(-size, +size, +size, 1, 1, 0);
+	vertices.emplace_back(-1.0f, -1.0f, +1.0f, 1, 0, 0);
+	vertices.emplace_back(+1.0f, -1.0f, +1.0f, 0, 1, 0);
+	vertices.emplace_back(+1.0f, +1.0f, +1.0f, 0, 0, 1);
+	vertices.emplace_back(-1.0f, +1.0f, +1.0f, 1, 1, 0);
 
 	vertexBuffer = new VertexBuffer(vertices.data(), sizeof(VertexColor), vertices.size());
 
