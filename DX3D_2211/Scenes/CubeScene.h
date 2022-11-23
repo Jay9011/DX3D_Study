@@ -12,4 +12,5 @@ public:
 
 private:
     Quad* quad;
+    vector<Cube*> cubes;
 };
