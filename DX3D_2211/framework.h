@@ -48,8 +48,10 @@ typedef XMFLOAT4X4 Float4x4;
 #include "Framework/Buffer/VertexLayout.h"
 #include "Framework/Buffer/GlobalBuffer.h"
 
+#include "Framework/Environment/Environment.h"
+
 //Object Header
-#include "Objects/Cube.h"
+#include "Objects/Basic/Cube.h"
 
 //Scene Header
 #include "Scenes/Scene.h"

@@ -1,12 +1,14 @@
 #include "Framework.h"
 
 #include "Scenes/TutorialScene.h"
+#include "Scenes/CubeScene.h"
 
 GameManager::GameManager()
 {
 	Create();
 
-	scene = new TutorialScene();
+	//scene = new TutorialScene();
+	scene = new CubeScene();
 }
 
 GameManager::~GameManager()
@@ -32,10 +34,12 @@ void GameManager::Render()
 void GameManager::Create()
 {
 	Device::Get();
+	Environment::Get();
 }
 
 void GameManager::Delete()
 {
 	Device::Delete();
 	Shader::Delete();
+	Environment::Delete();
 }
