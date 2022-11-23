@@ -23,6 +23,11 @@
 #pragma comment(lib, "d3dcompiler.lib")
 #pragma comment(lib, "dxguid.lib")
 
+//DirectXTex
+#include <Libraries/DirectXTex/DirectXTex.h>
+
+#pragma comment(lib, "Libraries/DirectXTex/DirectXTex.lib")
+
 using namespace std;
 using namespace DirectX;
 
@@ -35,6 +40,9 @@ typedef XMFLOAT4X4 Float4x4;
 
 //Framework Header
 #include "Framework/Utility/Singleton.h"
+#include "Framework/Utility/Utility.h"
+
+using namespace Utility;
 
 #include "Framework/Device/Device.h"
 
@@ -50,7 +58,17 @@ typedef XMFLOAT4X4 Float4x4;
 
 #include "Framework/Environment/Environment.h"
 
+#include "Framework/Math/Vector3.h"
+#include "Framework/Math/GameMath.h"
+
+using namespace GameMath;
+
+#include "Framework/Render/Texture.h"
+#include "Framework/Render/Material.h"
+#include "Framework/Render/Mesh.h"
+
 //Object Header
+#include "Objects/Basic/Quad.h"
 #include "Objects/Basic/Cube.h"
 
 //Scene Header

@@ -2,35 +2,35 @@
 
 class Cube
 {
+private:
+    typedef VertexColor VertexType;
+
 public:
     Cube();
-    Cube(Float3 pos);
-    Cube(Float3 pos, float size);
-    Cube(Float3 pos, float size, float speed);
+    Cube(Vector3 size);
     ~Cube();
 
     void Update();
     void Render();
 
 private:
-    void SetVertex();
+    void CreateMesh();
 
 private:
-    MatrixBuffer* worldBuffer;
-
-    VertexBuffer* vertexBuffer;
-    IndexBuffer* indexBuffer;
+    Vector3 size;
+    float  rotationSpeed;
+    float  angle = 0.0f;
+    Float3 translation;
 
     VertexShader* vertexShader;
     PixelShader* pixelShader;
+
+    MatrixBuffer* worldBuffer;
+    VertexBuffer* vertexBuffer;
+    IndexBuffer* indexBuffer;
 
     vector<VertexColor> vertices;
     vector<UINT> indices;
 
     Matrix world;
-
-    float  scale;
-    float  rotationSpeed;
-    float  angle = 0.0f;
-    Float3 translation;
 };

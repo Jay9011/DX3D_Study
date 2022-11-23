@@ -6,27 +6,8 @@ Cube::Cube() :
 {
 }
 
-Cube::Cube(Float3 pos) :
-    Cube(pos, 0.5f)
+Cube::Cube(Vector3 size)
 {
-}
-
-Cube::Cube(Float3 pos, float size) :
-	Cube(pos, size, 0.0001f)
-{
-}
-
-Cube::Cube(Float3 pos, float size, float speed) :
-	translation(pos),
-	scale(size),
-	rotationSpeed(speed)
-{
-	vertexShader = Shader::AddVS(L"Shaders/Tutorial.hlsl");
-	pixelShader = Shader::AddPS(L"Shaders/Tutorial.hlsl");
-
-	SetVertex();
-
-	worldBuffer = new MatrixBuffer();
 }
 
 Cube::~Cube()
@@ -44,11 +25,6 @@ void Cube::Update()
 	/*
 	* world SRT
 	*/
-	world = XMMatrixScaling(scale, scale, scale);
-	world *= XMMatrixRotationX(angle) * XMMatrixRotationY(angle);
-	world *= XMMatrixTranslation(translation.x, translation.y, translation.z);
-
-	worldBuffer->Set(world);
 }
 
 void Cube::Render()
@@ -64,7 +40,7 @@ void Cube::Render()
 	DC->DrawIndexed(indices.size(), 0, 0);
 }
 
-void Cube::SetVertex()
+void Cube::CreateMesh()
 {
 	vertices.emplace_back(-1.0f, -1.0f, -1.0f, 1, 0, 0);
 	vertices.emplace_back(+1.0f, -1.0f, -1.0f, 0, 1, 0);
