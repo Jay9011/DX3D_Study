@@ -5,7 +5,6 @@ Quad::Quad(float width, float height) :
     height(height)
 {
     material = new Material(L"Shaders/Texture.hlsl");
-    material->SetDiffuseMap(L"Textures/Landscape/Box.png");
 
     CreateMesh();
 
@@ -19,12 +18,9 @@ Quad::~Quad()
     delete worldBuffer;
 }
 
-void Quad::Update()
-{
-}
-
 void Quad::Render()
 {
+    worldBuffer->Set(world);
     worldBuffer->SetVSBuffer(0);
 
     mesh->IASet();
@@ -38,12 +34,12 @@ void Quad::CreateMesh()
     Float2 halfSize = { width * 0.5f, height * 0.5f };
 
     vertices.resize(4);
-    vertices[0] = VertexType(-halfSize.x, -halfSize.y, 0, 0, 1);
-    vertices[1] = VertexType(+halfSize.x, -halfSize.y, 0, 1, 0);
-    vertices[2] = VertexType(+halfSize.x, +halfSize.y, 0, 1, 1);
-    vertices[3] = VertexType(-halfSize.x, +halfSize.y, 0, 0, 0);
+    vertices[0] = VertexType(-halfSize.x, +halfSize.y, 0, 0, 0);
+    vertices[1] = VertexType(+halfSize.x, +halfSize.y, 0, 1, 0);
+    vertices[2] = VertexType(-halfSize.x, -halfSize.y, 0, 0, 1);
+    vertices[3] = VertexType(+halfSize.x, -halfSize.y, 0, 1, 1);
 
-    indices = { 0, 3, 2, 2, 1, 0 };
+    indices = { 0, 1, 2, 2, 1, 3 };
 
     mesh = new Mesh(vertices.data(), sizeof(VertexType), vertices.size(), indices.data(), indices.size());
 }

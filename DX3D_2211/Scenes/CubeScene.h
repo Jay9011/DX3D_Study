@@ -11,6 +11,8 @@ public:
     virtual void GUIRender() override;
 
 private:
-    Cube* cube1;
-    Cube* cube2;
+    //Cube* cube1;
+    //Cube* cube2;
+
+    Robot* robot;
 };

@@ -19,7 +19,7 @@ void Environment::CreateProjection()
 	viewBuffer = new MatrixBuffer();
 	projectionBuffer = new MatrixBuffer();
 
-	Vector4 eye = XMVectorSet(3, 3, -4, 0);
+	Vector4 eye = XMVectorSet(3, 3, -15, 0);
 	Vector4 focus = XMVectorSet(0, 0, 0, 0);
 	Vector4 up = XMVectorSet(0, 1, 0, 0);
 

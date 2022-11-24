@@ -79,6 +79,8 @@ using namespace GameMath;
 #include "Objects/Basic/Quad.h"
 #include "Objects/Basic/Cube.h"
 
+#include "Objects/Custom/Robot.h"
+
 //Scene Header
 #include "Scenes/Scene.h"
 #include "GameManager.h"

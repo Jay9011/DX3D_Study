@@ -165,6 +165,7 @@
     <ClInclude Include="Libraries\DirectXTex\DirectXTex.h" />
     <ClInclude Include="Objects\Basic\Cube.h" />
     <ClInclude Include="Objects\Basic\Quad.h" />
+    <ClInclude Include="Objects\Custom\Robot.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Scenes\CubeScene.h" />
@@ -200,6 +201,7 @@
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Objects\Basic\Cube.cpp" />
     <ClCompile Include="Objects\Basic\Quad.cpp" />
+    <ClCompile Include="Objects\Custom\Robot.cpp" />
     <ClCompile Include="Scenes\CubeScene.cpp" />
     <ClCompile Include="Scenes\TutorialScene.cpp" />
   </ItemGroup>
