@@ -5,6 +5,7 @@ Environment::Environment()
 {
     CreateProjection();
     SetViewport();
+	CreateStates();
 }
 
 Environment::~Environment()
@@ -18,7 +19,7 @@ void Environment::CreateProjection()
 	viewBuffer = new MatrixBuffer();
 	projectionBuffer = new MatrixBuffer();
 
-	Vector4 eye = XMVectorSet(3, 3, -5, 0);
+	Vector4 eye = XMVectorSet(3, 3, -4, 0);
 	Vector4 focus = XMVectorSet(0, 0, 0, 0);
 	Vector4 up = XMVectorSet(0, 1, 0, 0);
 
@@ -42,4 +43,10 @@ void Environment::SetViewport()
 	viewport.MaxDepth = 1.0f;
 
 	DC->RSSetViewports(1, &viewport);
+}
+
+void Environment::CreateStates()
+{
+	samplerState = new SamplerState();
+	samplerState->PSSetState(0);
 }

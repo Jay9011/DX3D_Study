@@ -1,16 +1,18 @@
 #pragma once
 
-class Cube
+class Cube : public Transform
 {
 private:
     typedef VertexUV VertexType;
 
 public:
-    Cube(Vector3 size);
+    Cube(Vector3 size = Vector3(1, 1, 1));
     ~Cube();
 
-    void Update();
+    //void Update();
     void Render();
+
+    Material* GetMaterial() { return material; }
 
     void SetScale(Vector3 scale);
     void SetRotateSpeed(float speed);
@@ -23,16 +25,16 @@ private:
     Vector3 size;
 
     Vector3 scale;
-    float  angle = 0.0f;
-    float  rotationSpeed;
+    float   rotationSpeed;
     Vector3 translation;
     
     vector<VertexType> vertices;
     vector<UINT> indices;
 
-    Matrix world;
-    MatrixBuffer* worldBuffer;
-
     Material* material;
     Mesh* mesh;
+
+    /*Matrix world;
+    MatrixBuffer* worldBuffer;
+    Float4x4 worldMatrix;*/
 };

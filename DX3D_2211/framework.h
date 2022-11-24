@@ -41,6 +41,8 @@ typedef XMFLOAT4X4 Float4x4;
 //Framework Header
 #include "Framework/Utility/Singleton.h"
 #include "Framework/Utility/Utility.h"
+#include "Framework/Utility/BinaryReader.h"
+#include "Framework/Utility/BinaryWriter.h"
 
 using namespace Utility;
 
@@ -56,10 +58,16 @@ using namespace Utility;
 #include "Framework/Buffer/VertexLayout.h"
 #include "Framework/Buffer/GlobalBuffer.h"
 
+#include "Framework/State/BlendState.h" // Alpha
+#include "Framework/State/DepthStencilState.h"
+#include "Framework/State/RasterizerState.h"    // 폴리곤의 완성시 시계방향과 반시계방향 혹은 양면 방향을 결정해준다.
+#include "Framework/State/SamplerState.h"
+
 #include "Framework/Environment/Environment.h"
 
 #include "Framework/Math/Vector3.h"
 #include "Framework/Math/GameMath.h"
+#include "Framework/Math/Transform.h"
 
 using namespace GameMath;
 

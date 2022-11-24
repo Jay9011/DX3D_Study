@@ -3,41 +3,30 @@
 
 CubeScene::CubeScene()
 {
-    quad = new Quad();
-    cubes.push_back(new Cube({ 1.0f, 1.0f, 1.0f }));
-    cubes.push_back(new Cube({ 1.0f, 1.0f, 1.0f }));
-    cubes.push_back(new Cube({ 1.0f, 1.0f, 1.0f }));
+    cube1 = new Cube();
+    cube1->GetMaterial()->SetDiffuseMap(L"Textures/Landscape/Box.png");
 
-    cubes[1]->SetPos({-3.0f, 0.0f, 0.0f});
-    cubes[1]->SetRotateSpeed(0.00015f);
-    cubes[1]->SetScale({ 0.3f, 0.3f, 0.3f });
-    cubes[2]->SetPos({0.5f, -1.0f, 5.0f});
-    cubes[2]->SetRotateSpeed(0.0002f);
-    cubes[2]->SetScale({ 3.0f, 3.0f, 3.0f });
+    cube2 = new Cube();
+    cube2->GetMaterial()->SetDiffuseMap(L"Textures/Landscape/Box.png");
+    cube2->SetPos({ 3.0f, 0.0f, 0.0f });
 }
 
 CubeScene::~CubeScene()
 {
-    delete quad;
-
-    for (auto& cube : cubes)
-        delete cube;
-
-    cubes.clear();
+    delete cube1;
+    delete cube2;
 }
 
 void CubeScene::Update()
 {
-    for (auto& cube : cubes)
-        cube->Update();
+    cube1->UpdateWorld();
+    cube2->UpdateWorld();
 }
 
 void CubeScene::Render()
 {
-    //quad->Render();
-
-    for (auto& cube : cubes)
-        cube->Render();
+    cube1->Render();
+    cube2->Render();
 }
 
 void CubeScene::GUIRender()

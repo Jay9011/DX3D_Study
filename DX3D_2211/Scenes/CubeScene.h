@@ -11,6 +11,6 @@ public:
     virtual void GUIRender() override;
 
 private:
-    Quad* quad;
-    vector<Cube*> cubes;
+    Cube* cube1;
+    Cube* cube2;
 };

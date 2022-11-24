@@ -9,8 +9,11 @@ public:
 private:
     void CreateProjection();
     void SetViewport();
+    void CreateStates();
 
 private:
     MatrixBuffer* viewBuffer;
     MatrixBuffer* projectionBuffer;
+
+    SamplerState* samplerState;
 };

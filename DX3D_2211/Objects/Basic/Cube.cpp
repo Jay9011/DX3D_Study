@@ -4,7 +4,7 @@
 Cube::Cube(Vector3 size) :
 	size(size),
 	scale(Vector3(1.0f, 1.0f, 1.0f)),
-	rotationSpeed(0.0001f),
+	rotationSpeed(0.001f),
 	translation(Vector3(0.0f, 0.0f, 0.0f))
 {
 	material = new Material(L"Shaders/Texture.hlsl");
@@ -12,32 +12,42 @@ Cube::Cube(Vector3 size) :
 
 	CreateMesh();
 
-	worldBuffer = new MatrixBuffer();
+	//worldBuffer = new MatrixBuffer();
+
+	//worldMatrix._11 = 1;
+	//worldMatrix._22 = 1;
+	//worldMatrix._33 = 1;
+	//worldMatrix._44 = 1;
 }
 
 Cube::~Cube()
 {
 	delete material;
 	delete mesh;
-	delete worldBuffer;
+	//delete worldBuffer;
 }
-
-void Cube::Update()
-{
-	angle += rotationSpeed;
-
-	/*
-	* world SRT
-	*/
-	world = XMMatrixScaling(scale.x, scale.y, scale.z);
-	world *= XMMatrixRotationX(angle) * XMMatrixRotationY(angle);
-	world *= XMMatrixTranslation(translation.x, translation.y, translation.z);
-	worldBuffer->Set(world);
-}
+//
+//void Cube::Update()
+//{
+//	static float angle = 0.0f;
+//
+//	if (GetAsyncKeyState('A'))
+//		angle += rotationSpeed;
+//	if (GetAsyncKeyState('D'))
+//		angle -= rotationSpeed;
+//
+//	worldMatrix._11 = cos(angle);
+//	worldMatrix._13 = -sin(angle);
+//	worldMatrix._31 = sin(angle);
+//	worldMatrix._33 = cos(angle);
+//
+//	world = XMLoadFloat4x4(&worldMatrix);
+//}
 
 void Cube::Render()
 {
-	worldBuffer->SetVSBuffer(0);
+	/*worldBuffer->Set(world);
+	worldBuffer->SetVSBuffer(0);*/
 
 	mesh->IASet();
 	material->Set();
@@ -62,45 +72,34 @@ void Cube::SetPos(Vector3 pos)
 
 void Cube::CreateMesh()
 {
-	Float3 halfSize = { size.x * 0.5f, size.y * 0.5f, size.z * 0.5f };
+	Vector3 halfSize = { size.x * 0.5f, size.y * 0.5f, size.z * 0.5f };
 
-	vertices.emplace_back(-halfSize.x, -halfSize.y, -halfSize.z, 0, 0); // 0 : F LB
-	vertices.emplace_back(+halfSize.x, -halfSize.y, -halfSize.z, 1, 0); // 1 : F RB
-	vertices.emplace_back(+halfSize.x, +halfSize.y, -halfSize.z, 1, 1); // 2 : F RT
-	vertices.emplace_back(-halfSize.x, +halfSize.y, -halfSize.z, 0, 1); // 3 : F LT
-	
-	vertices.emplace_back(+halfSize.x, -halfSize.y, -halfSize.z, 0, 0); // 4 : R LB
-	vertices.emplace_back(+halfSize.x, -halfSize.y, +halfSize.z, 1, 0); // 5 : R RB
-	vertices.emplace_back(+halfSize.x, +halfSize.y, +halfSize.z, 1, 1); // 6 : R RT
-	vertices.emplace_back(+halfSize.x, +halfSize.y, -halfSize.z, 0, 1); // 7 : R LT
-	
-	vertices.emplace_back(+halfSize.x, -halfSize.y, +halfSize.z, 0, 0); // 8  : B LB
-	vertices.emplace_back(-halfSize.x, -halfSize.y, +halfSize.z, 1, 0); // 9  : B RB
-	vertices.emplace_back(-halfSize.x, +halfSize.y, +halfSize.z, 1, 1); // 10 : B RT
-	vertices.emplace_back(+halfSize.x, +halfSize.y, +halfSize.z, 0, 1); // 11 : B LT
-	
-	vertices.emplace_back(-halfSize.x, -halfSize.y, +halfSize.z, 0, 0); // 12 : L LB
-	vertices.emplace_back(-halfSize.x, -halfSize.y, -halfSize.z, 1, 0); // 13 : L RB
-	vertices.emplace_back(-halfSize.x, +halfSize.y, -halfSize.z, 1, 1); // 14 : L RT
-	vertices.emplace_back(-halfSize.x, +halfSize.y, +halfSize.z, 0, 1); // 15 : L LT
-	
-	vertices.emplace_back(-halfSize.x, +halfSize.y, -halfSize.z, 0, 0); // 16 : T LB
-	vertices.emplace_back(+halfSize.x, +halfSize.y, -halfSize.z, 1, 0); // 17 : T RB
-	vertices.emplace_back(+halfSize.x, +halfSize.y, +halfSize.z, 1, 1); // 18 : T RT
-	vertices.emplace_back(-halfSize.x, +halfSize.y, +halfSize.z, 0, 1); // 19 : T LT
+	vertices.resize(8);
 
-	vertices.emplace_back(-halfSize.x, -halfSize.y, +halfSize.z, 0, 0); // 20 : BT LB
-	vertices.emplace_back(+halfSize.x, -halfSize.y, +halfSize.z, 1, 0); // 21 : BT RB
-	vertices.emplace_back(+halfSize.x, -halfSize.y, -halfSize.z, 1, 1); // 22 : BT RT
-	vertices.emplace_back(-halfSize.x, -halfSize.y, -halfSize.z, 0, 1); // 23 : BT LT
+	vertices[0].pos = { -halfSize.x, +halfSize.y, -halfSize.z };
+	vertices[1].pos = { +halfSize.x, +halfSize.y, -halfSize.z };
+	vertices[2].pos = { -halfSize.x, -halfSize.y, -halfSize.z };
+	vertices[3].pos = { +halfSize.x, -halfSize.y, -halfSize.z };
+
+	vertices[4].pos = { -halfSize.x, +halfSize.y, +halfSize.z };
+	vertices[5].pos = { +halfSize.x, +halfSize.y, +halfSize.z };
+	vertices[6].pos = { -halfSize.x, -halfSize.y, +halfSize.z };
+	vertices[7].pos = { +halfSize.x, -halfSize.y, +halfSize.z };
+
+	vertices[0].uv = { 0, 0 };
+	vertices[1].uv = { 1, 0 };
+	vertices[2].uv = { 0, 1 };
+	vertices[3].uv = { 1, 1 };
+
+	vertices[4].uv = { 0, 0 };
+	vertices[5].uv = { 1, 0 };
+	vertices[6].uv = { 0, 1 };
+	vertices[7].uv = { 1, 1 };
 
 	indices = {
-		0, 3, 2, 2, 1, 0,		// Front
-		4, 7, 6, 6, 5, 4,		// Right
-		8, 11, 10, 10, 9, 8,	// Back
-		12, 15, 14, 14, 13, 12,	// Left
-		16, 19, 18, 18, 17, 16, // Top
-		20, 23, 22, 22, 21, 20	// Bottom
+		0, 1, 2, 2, 1, 3,	// Front
+		0, 4, 5, 0, 5, 1,	// Top
+		3, 1, 5, 3, 5, 7,	// Right
 	};
 
 	mesh = new Mesh(vertices.data(), sizeof(VertexType), vertices.size(), indices.data(), indices.size());

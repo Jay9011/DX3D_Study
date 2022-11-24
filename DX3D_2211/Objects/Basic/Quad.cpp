@@ -36,10 +36,12 @@ void Quad::Render()
 void Quad::CreateMesh()
 {
     Float2 halfSize = { width * 0.5f, height * 0.5f };
-    vertices.emplace_back(-halfSize.x, -halfSize.y, 0, 0, 1);
-    vertices.emplace_back(+halfSize.x, -halfSize.y, 0, 1, 0);
-    vertices.emplace_back(+halfSize.x, +halfSize.y, 0, 1, 1);
-    vertices.emplace_back(-halfSize.x, +halfSize.y, 0, 0, 0);
+
+    vertices.resize(4);
+    vertices[0] = VertexType(-halfSize.x, -halfSize.y, 0, 0, 1);
+    vertices[1] = VertexType(+halfSize.x, -halfSize.y, 0, 1, 0);
+    vertices[2] = VertexType(+halfSize.x, +halfSize.y, 0, 1, 1);
+    vertices[3] = VertexType(-halfSize.x, +halfSize.y, 0, 0, 0);
 
     indices = { 0, 3, 2, 2, 1, 0 };
 
