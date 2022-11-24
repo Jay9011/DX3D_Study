@@ -20,7 +20,7 @@ CubeScene::~CubeScene()
 
 void CubeScene::Update()
 {
-    cube1->rotation.y += 0.001f;
+    cube1->rotation.y += 0.0005f;
 
     cube1->UpdateWorld();
     cube2->UpdateWorld();

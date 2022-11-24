@@ -50,15 +50,18 @@ void Cube::CreateMesh()
 	vertices[2].uv = { 0, 1 };
 	vertices[3].uv = { 1, 1 };
 
-	vertices[4].uv = { 0, 0 };
-	vertices[5].uv = { 1, 0 };
-	vertices[6].uv = { 0, 1 };
-	vertices[7].uv = { 1, 1 };
+	vertices[4].uv = { 1, 1 };
+	vertices[5].uv = { 0, 1 };
+	vertices[6].uv = { 1, 0 };
+	vertices[7].uv = { 0, 0 };
 
 	indices = {
 		0, 1, 2, 2, 1, 3,	// Front
 		0, 4, 5, 0, 5, 1,	// Top
 		3, 1, 5, 3, 5, 7,	// Right
+		5, 4, 7, 7, 4, 6,	// Back
+		4, 0, 6, 6, 0, 2,	// Left
+		2, 3, 6, 6, 3, 7	// Bottom
 	};
 
 	mesh = new Mesh(vertices.data(), sizeof(VertexType), vertices.size(), indices.data(), indices.size());
