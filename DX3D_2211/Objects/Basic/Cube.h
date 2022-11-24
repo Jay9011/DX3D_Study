@@ -9,7 +9,6 @@ public:
     Cube(Vector3 size = Vector3(1, 1, 1));
     ~Cube();
 
-    //void Update();
     void Render();
 
     Material* GetMaterial() { return material; }
@@ -33,8 +32,4 @@ private:
 
     Material* material;
     Mesh* mesh;
-
-    /*Matrix world;
-    MatrixBuffer* worldBuffer;
-    Float4x4 worldMatrix;*/
 };

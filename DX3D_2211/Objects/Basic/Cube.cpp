@@ -11,38 +11,13 @@ Cube::Cube(Vector3 size) :
 	material->SetDiffuseMap(L"Textures/Landscape/Box.png");
 
 	CreateMesh();
-
-	//worldBuffer = new MatrixBuffer();
-
-	//worldMatrix._11 = 1;
-	//worldMatrix._22 = 1;
-	//worldMatrix._33 = 1;
-	//worldMatrix._44 = 1;
 }
 
 Cube::~Cube()
 {
 	delete material;
 	delete mesh;
-	//delete worldBuffer;
 }
-//
-//void Cube::Update()
-//{
-//	static float angle = 0.0f;
-//
-//	if (GetAsyncKeyState('A'))
-//		angle += rotationSpeed;
-//	if (GetAsyncKeyState('D'))
-//		angle -= rotationSpeed;
-//
-//	worldMatrix._11 = cos(angle);
-//	worldMatrix._13 = -sin(angle);
-//	worldMatrix._31 = sin(angle);
-//	worldMatrix._33 = cos(angle);
-//
-//	world = XMLoadFloat4x4(&worldMatrix);
-//}
 
 void Cube::Render()
 {
@@ -72,7 +47,7 @@ void Cube::SetPos(Vector3 pos)
 
 void Cube::CreateMesh()
 {
-	Vector3 halfSize = { size.x * 0.5f, size.y * 0.5f, size.z * 0.5f };
+	Vector3 halfSize = size * 0.5f;
 
 	vertices.resize(8);
 

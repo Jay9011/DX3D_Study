@@ -78,7 +78,7 @@ void Transform::Load()
 {
     BinaryReader r("TextData/Transform/" + tag + ".trf");
 
-    if (!r.IsSuccess()) return;
+    if (r.IsFailed()) return;
 
     position = r.Vector();
     rotation = r.Vector();
