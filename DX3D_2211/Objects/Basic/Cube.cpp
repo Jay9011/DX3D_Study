@@ -64,35 +64,35 @@ void Cube::CreateMesh()
 {
 	Float3 halfSize = { size.x * 0.5f, size.y * 0.5f, size.z * 0.5f };
 
-	vertices.emplace_back(-halfSize.x, -halfSize.y, -halfSize.z, 1, 0); // 0 : F LB
-	vertices.emplace_back(+halfSize.x, -halfSize.y, -halfSize.z, 0, 1); // 1 : F RB
-	vertices.emplace_back(+halfSize.x, +halfSize.y, -halfSize.z, 0, 0); // 2 : F RT
-	vertices.emplace_back(-halfSize.x, +halfSize.y, -halfSize.z, 1, 1); // 3 : F LT
+	vertices.emplace_back(-halfSize.x, -halfSize.y, -halfSize.z, 0, 0); // 0 : F LB
+	vertices.emplace_back(+halfSize.x, -halfSize.y, -halfSize.z, 1, 0); // 1 : F RB
+	vertices.emplace_back(+halfSize.x, +halfSize.y, -halfSize.z, 1, 1); // 2 : F RT
+	vertices.emplace_back(-halfSize.x, +halfSize.y, -halfSize.z, 0, 1); // 3 : F LT
 	
-	vertices.emplace_back(+halfSize.x, -halfSize.y, -halfSize.z, 1, 0); // 4 : R LB
-	vertices.emplace_back(+halfSize.x, -halfSize.y, +halfSize.z, 0, 1); // 5 : R RB
-	vertices.emplace_back(+halfSize.x, +halfSize.y, +halfSize.z, 0, 0); // 6 : R RT
-	vertices.emplace_back(+halfSize.x, +halfSize.y, -halfSize.z, 1, 1); // 7 : R LT
+	vertices.emplace_back(+halfSize.x, -halfSize.y, -halfSize.z, 0, 0); // 4 : R LB
+	vertices.emplace_back(+halfSize.x, -halfSize.y, +halfSize.z, 1, 0); // 5 : R RB
+	vertices.emplace_back(+halfSize.x, +halfSize.y, +halfSize.z, 1, 1); // 6 : R RT
+	vertices.emplace_back(+halfSize.x, +halfSize.y, -halfSize.z, 0, 1); // 7 : R LT
 	
-	vertices.emplace_back(+halfSize.x, -halfSize.y, +halfSize.z, 1, 0); // 8  : B LB
-	vertices.emplace_back(-halfSize.x, -halfSize.y, +halfSize.z, 0, 1); // 9  : B RB
-	vertices.emplace_back(-halfSize.x, +halfSize.y, +halfSize.z, 0, 0); // 10 : B RT
-	vertices.emplace_back(+halfSize.x, +halfSize.y, +halfSize.z, 1, 1); // 11 : B LT
+	vertices.emplace_back(+halfSize.x, -halfSize.y, +halfSize.z, 0, 0); // 8  : B LB
+	vertices.emplace_back(-halfSize.x, -halfSize.y, +halfSize.z, 1, 0); // 9  : B RB
+	vertices.emplace_back(-halfSize.x, +halfSize.y, +halfSize.z, 1, 1); // 10 : B RT
+	vertices.emplace_back(+halfSize.x, +halfSize.y, +halfSize.z, 0, 1); // 11 : B LT
 	
-	vertices.emplace_back(-halfSize.x, -halfSize.y, +halfSize.z, 1, 0); // 12 : L LB
-	vertices.emplace_back(-halfSize.x, -halfSize.y, -halfSize.z, 0, 1); // 13 : L RB
-	vertices.emplace_back(-halfSize.x, +halfSize.y, -halfSize.z, 0, 0); // 14 : L RT
-	vertices.emplace_back(-halfSize.x, +halfSize.y, +halfSize.z, 1, 1); // 15 : L LT
+	vertices.emplace_back(-halfSize.x, -halfSize.y, +halfSize.z, 0, 0); // 12 : L LB
+	vertices.emplace_back(-halfSize.x, -halfSize.y, -halfSize.z, 1, 0); // 13 : L RB
+	vertices.emplace_back(-halfSize.x, +halfSize.y, -halfSize.z, 1, 1); // 14 : L RT
+	vertices.emplace_back(-halfSize.x, +halfSize.y, +halfSize.z, 0, 1); // 15 : L LT
 	
-	vertices.emplace_back(-halfSize.x, +halfSize.y, -halfSize.z, 1, 0); // 16 : T LB
-	vertices.emplace_back(+halfSize.x, +halfSize.y, -halfSize.z, 0, 1); // 17 : T RB
-	vertices.emplace_back(+halfSize.x, +halfSize.y, +halfSize.z, 0, 0); // 18 : T RT
-	vertices.emplace_back(-halfSize.x, +halfSize.y, +halfSize.z, 1, 1); // 19 : T LT
+	vertices.emplace_back(-halfSize.x, +halfSize.y, -halfSize.z, 0, 0); // 16 : T LB
+	vertices.emplace_back(+halfSize.x, +halfSize.y, -halfSize.z, 1, 0); // 17 : T RB
+	vertices.emplace_back(+halfSize.x, +halfSize.y, +halfSize.z, 1, 1); // 18 : T RT
+	vertices.emplace_back(-halfSize.x, +halfSize.y, +halfSize.z, 0, 1); // 19 : T LT
 
-	vertices.emplace_back(-halfSize.x, -halfSize.y, +halfSize.z, 1, 0); // 20 : BT LB
-	vertices.emplace_back(+halfSize.x, -halfSize.y, +halfSize.z, 0, 1); // 21 : BT RB
-	vertices.emplace_back(+halfSize.x, -halfSize.y, -halfSize.z, 0, 0); // 22 : BT RT
-	vertices.emplace_back(-halfSize.x, -halfSize.y, -halfSize.z, 1, 1); // 23 : BT LT
+	vertices.emplace_back(-halfSize.x, -halfSize.y, +halfSize.z, 0, 0); // 20 : BT LB
+	vertices.emplace_back(+halfSize.x, -halfSize.y, +halfSize.z, 1, 0); // 21 : BT RB
+	vertices.emplace_back(+halfSize.x, -halfSize.y, -halfSize.z, 1, 1); // 22 : BT RT
+	vertices.emplace_back(-halfSize.x, -halfSize.y, -halfSize.z, 0, 1); // 23 : BT LT
 
 	indices = {
 		0, 3, 2, 2, 1, 0,		// Front
