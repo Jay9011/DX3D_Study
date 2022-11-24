@@ -7,8 +7,9 @@ CubeScene::CubeScene()
     cube1->GetMaterial()->SetDiffuseMap(L"Textures/Landscape/Box.png");
 
     cube2 = new Cube();
-    cube2->GetMaterial()->SetDiffuseMap(L"Textures/Landscape/Box.png");
-    cube2->SetPos({ 3.0f, 0.0f, 0.0f });
+    cube2->SetParent(cube1);
+    cube2->GetMaterial()->SetDiffuseMap(L"Textures/Landscape/Dirt.png");
+    cube2->position.x = 3.0f;
 }
 
 CubeScene::~CubeScene()
@@ -19,6 +20,8 @@ CubeScene::~CubeScene()
 
 void CubeScene::Update()
 {
+    cube1->rotation.y += 0.0001f;
+
     cube1->UpdateWorld();
     cube2->UpdateWorld();
 }

@@ -13,20 +13,14 @@ public:
 
     Material* GetMaterial() { return material; }
 
-    void SetScale(Vector3 scale);
-    void SetRotateSpeed(float speed);
-    void SetPos(Vector3 pos);
-
 private:
     void CreateMesh();
 
 private:
     Vector3 size;
 
-    Vector3 scale;
-    float   rotationSpeed;
-    Vector3 translation;
-    
+    MatrixBuffer* worldBuffer;
+
     vector<VertexType> vertices;
     vector<UINT> indices;
 

@@ -2,47 +2,31 @@
 #include "Cube.h"
 
 Cube::Cube(Vector3 size) :
-	size(size),
-	scale(Vector3(1.0f, 1.0f, 1.0f)),
-	rotationSpeed(0.001f),
-	translation(Vector3(0.0f, 0.0f, 0.0f))
+	size(size)
 {
 	material = new Material(L"Shaders/Texture.hlsl");
-	material->SetDiffuseMap(L"Textures/Landscape/Box.png");
 
 	CreateMesh();
+
+	worldBuffer = new MatrixBuffer();
 }
 
 Cube::~Cube()
 {
 	delete material;
 	delete mesh;
+	delete worldBuffer;
 }
 
 void Cube::Render()
 {
-	/*worldBuffer->Set(world);
-	worldBuffer->SetVSBuffer(0);*/
+	worldBuffer->Set(world);
+	worldBuffer->SetVSBuffer(0);
 
 	mesh->IASet();
 	material->Set();
 
 	DC->DrawIndexed(indices.size(), 0, 0);
-}
-
-void Cube::SetScale(Vector3 scale)
-{
-	this->scale = scale;
-}
-
-void Cube::SetRotateSpeed(float speed)
-{
-	this->rotationSpeed = speed;
-}
-
-void Cube::SetPos(Vector3 pos)
-{
-	this->translation = pos;
 }
 
 void Cube::CreateMesh()
