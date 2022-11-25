@@ -166,10 +166,12 @@
     <ClInclude Include="Objects\Basic\Cube.h" />
     <ClInclude Include="Objects\Basic\Quad.h" />
     <ClInclude Include="Objects\Custom\Robot.h" />
+    <ClInclude Include="Objects\Landscape\Terrain.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Scenes\CubeScene.h" />
     <ClInclude Include="Scenes\Scene.h" />
+    <ClInclude Include="Scenes\TerrainScene.h" />
     <ClInclude Include="Scenes\TutorialScene.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -202,7 +204,9 @@
     <ClCompile Include="Objects\Basic\Cube.cpp" />
     <ClCompile Include="Objects\Basic\Quad.cpp" />
     <ClCompile Include="Objects\Custom\Robot.cpp" />
+    <ClCompile Include="Objects\Landscape\Terrain.cpp" />
     <ClCompile Include="Scenes\CubeScene.cpp" />
+    <ClCompile Include="Scenes\TerrainScene.cpp" />
     <ClCompile Include="Scenes\TutorialScene.cpp" />
   </ItemGroup>
   <ItemGroup>

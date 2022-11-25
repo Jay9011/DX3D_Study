@@ -78,8 +78,8 @@ using namespace GameMath;
 //Object Header
 #include "Objects/Basic/Quad.h"
 #include "Objects/Basic/Cube.h"
-
 #include "Objects/Custom/Robot.h"
+#include "Objects/Landscape/Terrain.h"
 
 //Scene Header
 #include "Scenes/Scene.h"

@@ -2,13 +2,15 @@
 
 #include "Scenes/TutorialScene.h"
 #include "Scenes/CubeScene.h"
+#include "Scenes/TerrainScene.h"
 
 GameManager::GameManager()
 {
 	Create();
 
 	//scene = new TutorialScene();
-	scene = new CubeScene();
+	//scene = new CubeScene();
+	scene = new TerrainScene();
 }
 
 GameManager::~GameManager()
@@ -41,5 +43,6 @@ void GameManager::Delete()
 {
 	Device::Delete();
 	Shader::Delete();
+	Texture::Delete();
 	Environment::Delete();
 }
