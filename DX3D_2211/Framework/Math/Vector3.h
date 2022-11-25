@@ -128,6 +128,17 @@ struct Vector3
         return value2 / value1;
     }
 
+    friend void operator+=(Float3& value1, const Vector3& value2)
+    {
+        Vector4 temp = XMLoadFloat3(&value1) + value2.data;
+        XMStoreFloat3(&value1, temp);
+    }
+    friend void operator-=(Float3& value1, const Vector3& value2)
+    {
+        Vector4 temp = XMLoadFloat3(&value1) - value2.data;
+        XMStoreFloat3(&value1, temp);
+    }
+
     bool operator==(const Vector3& value) const { return XMVector3Equal(data, value.data); }
 
     float Length() const { return XMVectorGetX(XMVector3Length(data)); }

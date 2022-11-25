@@ -4,10 +4,10 @@
 TerrainScene::TerrainScene()
 {
     terrain = new Terrain();
-    terrain->GetMaterial()->SetDiffuseMap(L"Textures/Test.jpg");
+    terrain->GetMaterial()->SetDiffuseMap(L"Textures/Landscape/Dirt2.png");
 
     rasterizerState = new RasterizerState();
-    rasterizerState->FillMode(D3D11_FILL_WIREFRAME);
+    //rasterizerState->FillMode(D3D11_FILL_WIREFRAME);
     rasterizerState->SetState();
 }
 

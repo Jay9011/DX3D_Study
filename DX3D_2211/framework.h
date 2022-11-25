@@ -28,6 +28,13 @@
 
 #pragma comment(lib, "Libraries/DirectXTex/DirectXTex.lib")
 
+//ImGui
+#include <imgui.h>
+#include <imgui_impl_dx11.h>
+#include <imgui_impl_win32.h>
+
+#pragma comment(lib, "Libraries/ImGui/imGui.lib")
+
 using namespace std;
 using namespace DirectX;
 

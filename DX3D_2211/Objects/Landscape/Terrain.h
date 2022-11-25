@@ -3,7 +3,8 @@
 class Terrain : public Transform
 {
 private:
-    typedef VertexUV VertexType;
+    typedef VertexUVNormal VertexType;
+    const float MAX_HEIGHT = 20.0f;
 
 public:
     Terrain();
@@ -15,6 +16,7 @@ public:
 
 private:
     void CreateMesh();
+    void CreateNormal();
 
 private:
     UINT width = 10, height = 10;

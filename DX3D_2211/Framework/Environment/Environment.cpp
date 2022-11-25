@@ -6,12 +6,16 @@ Environment::Environment()
     CreateProjection();
     SetViewport();
 	CreateStates();
+
+	lightBuffer = new LightBuffer();
+	lightBuffer->SetVSBuffer(3);
 }
 
 Environment::~Environment()
 {
     delete viewBuffer;
     delete projectionBuffer;
+	delete lightBuffer;
 }
 
 void Environment::CreateProjection()
@@ -19,8 +23,8 @@ void Environment::CreateProjection()
 	viewBuffer = new MatrixBuffer();
 	projectionBuffer = new MatrixBuffer();
 
-	Vector4 eye = XMVectorSet(3, 5, -15, 0);
-	Vector4 focus = XMVectorSet(0, 0, 0, 0);
+	Vector4 eye = XMVectorSet(128, 50, 0, 0);
+	Vector4 focus = XMVectorSet(128, 0, 128, 0);
 	Vector4 up = XMVectorSet(0, 1, 0, 0);
 
 	Matrix view = XMMatrixLookAtLH(eye, focus, up);

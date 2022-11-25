@@ -14,6 +14,7 @@ private:
 private:
     MatrixBuffer* viewBuffer;
     MatrixBuffer* projectionBuffer;
+    LightBuffer* lightBuffer;
 
     SamplerState* samplerState;
 };
