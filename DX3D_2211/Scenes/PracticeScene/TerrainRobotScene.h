@@ -11,6 +11,13 @@ public:
 	virtual void GUIRender() override;
 
 private:
+	void TargetCamera();
+
+private:
+	MatrixBuffer* viewBuffer;
+
 	Terrain* terrain;
 	Robot* robot;
+
+	bool targetCamera = false;
 };
