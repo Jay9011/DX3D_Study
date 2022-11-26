@@ -26,8 +26,8 @@ private:
     vector<VertexType> vertices;
     vector<UINT> indices;
 
-    Material* material;
     Mesh* mesh;
+    Material* material;
 
     Texture* heightMap;
 };

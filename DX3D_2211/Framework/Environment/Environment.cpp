@@ -8,7 +8,6 @@ Environment::Environment()
 	CreateStates();
 
 	lightBuffer = new LightBuffer();
-	lightBuffer->SetVSBuffer(3);
 }
 
 Environment::~Environment()
@@ -16,6 +15,12 @@ Environment::~Environment()
     delete viewBuffer;
     delete projectionBuffer;
 	delete lightBuffer;
+}
+
+void Environment::GUIRender()
+{
+	lightBuffer->SetVSBuffer(3);
+	ImGui::SliderFloat3("LightDir", (float*)&lightBuffer->GetLightDir(), -1, 1);
 }
 
 void Environment::CreateProjection()

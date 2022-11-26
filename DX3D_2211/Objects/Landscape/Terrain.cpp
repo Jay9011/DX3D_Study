@@ -62,13 +62,13 @@ void Terrain::CreateMesh()
 	{
 		for (UINT x = 0; x < width - 1; x++)
 		{
-			indices[count++] = (width * z + x);			// 0
-			indices[count++] = (width * (z + 1) + x);	// 1
-			indices[count++] = (width * z + x + 1);		// 2
+			indices[count++] = (width * z + x);				// 0
+			indices[count++] = (width * (z + 1) + x);		// 10	(width가 10인 경우)
+			indices[count++] = (width * z + x + 1);			// 1
 
-			indices[count++] = (width * z + x + 1);		// 2
-			indices[count++] = (width * (z + 1) + x);	// 1
-			indices[count++] = (width * (z + 1) + x + 1);// 3
+			indices[count++] = (width * z + x + 1);			// 1
+			indices[count++] = (width * (z + 1) + x);		// 10
+			indices[count++] = (width * (z + 1) + x + 1);	// 11
 		}
 	}
 

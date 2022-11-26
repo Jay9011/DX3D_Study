@@ -6,6 +6,8 @@ public:
     Environment();
     ~Environment();
 
+    void GUIRender();
+
 private:
     void CreateProjection();
     void SetViewport();

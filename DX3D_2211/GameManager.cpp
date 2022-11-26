@@ -28,7 +28,23 @@ void GameManager::Render()
 	Device::Get()->Clear();
 
 	scene->Render();
-	scene->GUIRender();
+
+	ImGui_ImplDX11_NewFrame();
+	ImGui_ImplWin32_NewFrame();
+	ImGui::NewFrame();
+
+	static bool isActive = true;
+
+	if (isActive)
+	{
+		ImGui::Begin("Inspector", &isActive);
+		Environment::Get()->GUIRender();
+		scene->GUIRender();
+		ImGui::End();
+	}
+
+	ImGui::Render();
+	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
 
 	Device::Get()->Present();
 }
@@ -37,6 +53,12 @@ void GameManager::Create()
 {
 	Device::Get();
 	Environment::Get();
+
+	ImGui::CreateContext();
+	ImGui::StyleColorsDark();
+
+	ImGui_ImplWin32_Init(hWnd);
+	ImGui_ImplDX11_Init(DEVICE, DC);
 }
 
 void GameManager::Delete()
@@ -45,4 +67,8 @@ void GameManager::Delete()
 	Shader::Delete();
 	Texture::Delete();
 	Environment::Delete();
+
+	ImGui_ImplDX11_Shutdown();
+	ImGui_ImplWin32_Shutdown();
+	ImGui::DestroyContext();
 }
