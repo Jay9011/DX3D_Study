@@ -12,6 +12,8 @@ public:
 
     void Render();
 
+    float GetHeight(Vector3 position);
+
     Material* GetMaterial() { return material; }
 
 private:
