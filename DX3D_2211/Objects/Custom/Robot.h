@@ -25,6 +25,10 @@ public:
     void Update();
     void Render();
 
+    Vector3 GetPosition() { return root->position; }
+    void SetPosition(const Vector3& position) { root->position = position; }
+    void SetHeight(const float& height) { root->position.y = height; }
+
 private:
     void Move();
 

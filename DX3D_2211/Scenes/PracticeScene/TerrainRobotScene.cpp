@@ -3,8 +3,8 @@
 
 TerrainRobotScene::TerrainRobotScene()
 {
-    //terrain = new Terrain();
-    //terrain->GetMaterial()->SetDiffuseMap(L"Textures/Landscape/Dirt2.png");
+    terrain = new Terrain();
+    terrain->GetMaterial()->SetDiffuseMap(L"Textures/Landscape/Dirt2.png");
 
     robot = new Robot();
 }
@@ -12,18 +12,19 @@ TerrainRobotScene::TerrainRobotScene()
 TerrainRobotScene::~TerrainRobotScene()
 {
     delete robot;
-    //delete terrain;
+    delete terrain;
 }
 
 void TerrainRobotScene::Update()
 {
+    robot->SetHeight(terrain->GetHeight(robot->GetPosition()));
     robot->Update();
 }
 
 void TerrainRobotScene::Render()
 {
     robot->Render();
-    //terrain->Render();
+    terrain->Render();
 }
 
 void TerrainRobotScene::GUIRender()

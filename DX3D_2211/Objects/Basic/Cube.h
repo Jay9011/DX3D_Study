@@ -3,7 +3,7 @@
 class Cube : public Transform
 {
 private:
-    typedef VertexUV VertexType;
+    typedef VertexUVNormal VertexType;
 
 public:
     Cube(Vector3 size = Vector3(1, 1, 1));
@@ -15,6 +15,7 @@ public:
 
 private:
     void CreateMesh();
+    void CreateNormal();
 
 private:
     Vector3 size;

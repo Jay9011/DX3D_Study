@@ -75,6 +75,7 @@ void Robot::CreateParts()
     {
         parts[i] = new Cube(GetPartSize((Part)i));
         parts[i]->GetMaterial()->SetDiffuseMap(L"Textures/Etc/white.jpg");
+        parts[i]->GetMaterial()->SetShader(L"Shaders/Practice/RobotShader.hlsl");
     }
     parts[Part::BODY]->GetMaterial()->SetDiffuseMap(L"Textures/Etc/body.jpg");
     parts[Part::LEFT_UPPER_ARM]->GetMaterial()->SetDiffuseMap(L"Textures/Etc/body.jpg");
