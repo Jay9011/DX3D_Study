@@ -25,7 +25,7 @@ void Environment::GUIRender()
 	Matrix view = XMMatrixLookAtLH(eye, focus, up);
 	viewBuffer->Set(view);
 	viewBuffer->SetVSBuffer(1);
-	ImGui::SliderFloat3("eye", (float*)&eye, 1, 256);
+	ImGui::SliderFloat3("eye", (float*)&eye, -10, 260);
 	ImGui::SliderFloat3("focus", (float*)&focus, 1, 256);
 }
 

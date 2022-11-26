@@ -60,5 +60,8 @@ float4 PS(PixelInput input) : SV_TARGET
     float4 diffuse = albedo * input.diffuse;
     float4 ambient = albedo * 0.1f;
     
+    if (input.diffuse == 0)
+        diffuse = ambient;
+    
     return diffuse;
 }
