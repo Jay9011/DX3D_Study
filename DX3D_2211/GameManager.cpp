@@ -4,13 +4,17 @@
 #include "Scenes/CubeScene.h"
 #include "Scenes/TerrainScene.h"
 
+#include "Scenes/PracticeScene/TerrainRobotScene.h"
+
 GameManager::GameManager()
 {
 	Create();
 
 	//scene = new TutorialScene();
 	//scene = new CubeScene();
-	scene = new TerrainScene();
+	//scene = new TerrainScene();
+
+	scene = new TerrainRobotScene();
 }
 
 GameManager::~GameManager()

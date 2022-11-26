@@ -21,16 +21,18 @@ void Environment::GUIRender()
 {
 	lightBuffer->SetVSBuffer(3);
 	ImGui::SliderFloat3("LightDir", (float*)&lightBuffer->GetLightDir(), -1, 1);
+
+	Matrix view = XMMatrixLookAtLH(eye, focus, up);
+	viewBuffer->Set(view);
+	viewBuffer->SetVSBuffer(1);
+	ImGui::SliderFloat3("eye", (float*)&eye, 1, 256);
+	ImGui::SliderFloat3("focus", (float*)&focus, 1, 256);
 }
 
 void Environment::CreateProjection()
 {
 	viewBuffer = new MatrixBuffer();
 	projectionBuffer = new MatrixBuffer();
-
-	Vector4 eye = XMVectorSet(128, 50, 0, 0);
-	Vector4 focus = XMVectorSet(128, 0, 128, 0);
-	Vector4 up = XMVectorSet(0, 1, 0, 0);
 
 	Matrix view = XMMatrixLookAtLH(eye, focus, up);
 	viewBuffer->Set(view);
