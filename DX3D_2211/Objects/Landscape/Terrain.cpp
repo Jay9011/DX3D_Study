@@ -4,6 +4,9 @@ Terrain::Terrain()
 {
 	//material = new Material(L"Shaders/Terrain.hlsl");
 	material = new Material(L"Shaders/Specular.hlsl");
+	material->SetDiffuseMap(L"Textures/Landscape/Fieldstone_DM.tga");
+	material->SetSpecularMap(L"Textures/Landscape/Fieldstone_SM.tga");
+
 	heightMap = Texture::Add(L"Textures/HeightMaps/HeightMap.png");
 
 	CreateMesh();

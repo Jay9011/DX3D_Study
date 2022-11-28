@@ -48,6 +48,8 @@ PixelInput VS(VertexInput input)
 }
 
 Texture2D diffuseMap : register(t0);
+Texture2D specularMap : register(t1);
+
 SamplerState samp : register(s0);
 
 cbuffer LightBuffer : register(b0)
@@ -74,7 +76,9 @@ float4 PS(PixelInput input) : SV_TARGET
         float3 reflection = normalize(reflect(light, normal));
         specular = saturate(dot(-reflection, input.viewDir));
         
-        specular = pow(specular, shininess);
+        float4 specularIntensity = specularMap.Sample(samp, input.uv);
+        
+        specular = pow(specular, shininess) * specularIntensity;
     }
     
     float4 diffuseColor = albedo * diffuse;
