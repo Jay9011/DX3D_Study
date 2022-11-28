@@ -15,7 +15,7 @@ private:
     void FreeMode();
 
 private:
-    float moveSpeed = 10.0f;
+    float moveSpeed = 50.0f;
     float rotSpeed = 10.0f;
 
     ViewBuffer* viewBuffer;

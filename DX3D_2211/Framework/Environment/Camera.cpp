@@ -62,6 +62,10 @@ void Camera::FreeMode()
         {
             position -= Up() * moveSpeed * DELTA;
         }
+
+        ImVec2 delta = ImGui::GetIO().MouseDelta;
+        rotation.x += delta.y * rotSpeed * DELTA;
+        rotation.y += delta.x * rotSpeed * DELTA;
     }
 
     UpdateWorld();

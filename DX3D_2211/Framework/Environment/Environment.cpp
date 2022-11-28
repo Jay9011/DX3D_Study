@@ -18,15 +18,21 @@ Environment::~Environment()
 	delete lightBuffer;
 }
 
+void Environment::Set()
+{
+	mainCamera->SetViewBuffer();
+	lightBuffer->SetPSBuffer(0);
+}
+
 void Environment::GUIRender()
 {
 	string fps = "FPS : " + to_string((int)ImGui::GetIO().Framerate);
 	ImGui::TextColored(ImVec4(0, 1, 0, 1), fps.c_str());
 
 	mainCamera->GUIRender();
-
-	lightBuffer->SetVSBuffer(3);
+	
 	ImGui::SliderFloat3("LightDir", (float*)&lightBuffer->GetLightDir(), -1, 1);
+	ImGui::DragFloat("Shininess", &lightBuffer->GetShininess(), 0.1f, 1.0f);
 }
 
 void Environment::CreateProjection()

@@ -6,6 +6,7 @@ public:
     Environment();
     ~Environment();
 
+    void Set();
     void GUIRender();
 
     Camera* GetMainCamera() { return mainCamera; }

@@ -33,7 +33,7 @@ void GameManager::Render()
 {
 	Device::Get()->Clear();
 
-	Environment::Get()->GetMainCamera()->SetViewBuffer();
+	Environment::Get()->Set();
 	scene->Render();
 
 	ImGui_ImplDX11_NewFrame();
