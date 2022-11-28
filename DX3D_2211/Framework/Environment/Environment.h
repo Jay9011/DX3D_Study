@@ -8,13 +8,15 @@ public:
 
     void GUIRender();
 
+    Camera* GetMainCamera() { return mainCamera; }
+
 private:
     void CreateProjection();
     void SetViewport();
     void CreateStates();
 
 private:
-    MatrixBuffer* viewBuffer;
+    Camera* mainCamera;
     MatrixBuffer* projectionBuffer;
     LightBuffer* lightBuffer;
 

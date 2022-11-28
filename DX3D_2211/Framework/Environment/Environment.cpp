@@ -8,33 +8,30 @@ Environment::Environment()
 	CreateStates();
 
 	lightBuffer = new LightBuffer();
+	mainCamera = new Camera();
 }
 
 Environment::~Environment()
 {
-    delete viewBuffer;
+	delete mainCamera;
     delete projectionBuffer;
 	delete lightBuffer;
 }
 
 void Environment::GUIRender()
 {
+	string fps = "FPS : " + to_string((int)ImGui::GetIO().Framerate);
+	ImGui::TextColored(ImVec4(0, 1, 0, 1), fps.c_str());
+
+	mainCamera->GUIRender();
+
 	lightBuffer->SetVSBuffer(3);
 	ImGui::SliderFloat3("LightDir", (float*)&lightBuffer->GetLightDir(), -1, 1);
 }
 
 void Environment::CreateProjection()
 {
-	viewBuffer = new MatrixBuffer();
 	projectionBuffer = new MatrixBuffer();
-
-	Vector4 eye = XMVectorSet(128, 50, 0, 0);
-	Vector4 focus = XMVectorSet(128, 0, 128, 0);
-	Vector4 up = XMVectorSet(0, 1, 0, 0);
-
-	Matrix view = XMMatrixLookAtLH(eye, focus, up);
-	viewBuffer->Set(view);
-	viewBuffer->SetVSBuffer(1);
 
 	Matrix projection = XMMatrixPerspectiveFovLH(XM_PIDIV4, WIN_WIDTH / (float)WIN_HEIGHT, 0.1f, 1000.0f);
 	projectionBuffer->Set(projection);

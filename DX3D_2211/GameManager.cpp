@@ -12,9 +12,9 @@ GameManager::GameManager()
 
 	//scene = new TutorialScene();
 	//scene = new CubeScene();
-	//scene = new TerrainScene();
+	scene = new TerrainScene();
+	//scene = new TerrainRobotScene();
 
-	scene = new TerrainRobotScene();
 }
 
 GameManager::~GameManager()
@@ -25,12 +25,15 @@ GameManager::~GameManager()
 void GameManager::Update()
 {
 	scene->Update();
+
+	Environment::Get()->GetMainCamera()->Update();
 }
 
 void GameManager::Render()
 {
 	Device::Get()->Clear();
 
+	Environment::Get()->GetMainCamera()->SetViewBuffer();
 	scene->Render();
 
 	ImGui_ImplDX11_NewFrame();

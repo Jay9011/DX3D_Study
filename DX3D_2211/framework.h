@@ -9,6 +9,18 @@
 #define DEVICE Device::Get()->GetDevice()
 #define DC Device::Get()->GetDeviceContext()
 
+#define DELTA ImGui::GetIO().DeltaTime
+
+#define KEY_PRESS(k) ImGui::IsKeyDown(k)
+#define KEY_DOWN(k) ImGui::IsKeyPressed(k, false)
+#define KEY_UP(k) ImGui::IsKeyReleased(k)
+
+// 0 : 좌클릭, 1 : 우클릭, 2 : 중간클릭
+#define MOUSE_PRESS(k) ImGui::IsMouseDown(k)
+#define MOUSE_DOWN(k) ImGui::IsMouseClicked(k)
+#define MOUSE_DBCLICK(k) ImGui::IsMouseDoubleClicked(k)
+#define MOUSE_UP(k) ImGui::IsMouseReleased(k);
+
 #include <windows.h>
 #include <string>
 #include <vector>
@@ -71,13 +83,14 @@ using namespace Utility;
 #include "Framework/State/RasterizerState.h"    // 폴리곤의 완성시 시계방향과 반시계방향 혹은 양면 방향을 결정해준다.
 #include "Framework/State/SamplerState.h"
 
-#include "Framework/Environment/Environment.h"
-
 #include "Framework/Math/Vector3.h"
 #include "Framework/Math/GameMath.h"
 #include "Framework/Math/Transform.h"
 
 using namespace GameMath;
+
+#include "Framework/Environment/Camera.h"
+#include "Framework/Environment/Environment.h"
 
 #include "Framework/Render/Texture.h"
 #include "Framework/Render/Material.h"
