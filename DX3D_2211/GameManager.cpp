@@ -22,6 +22,8 @@ GameManager::GameManager()
 GameManager::~GameManager()
 {
 	delete scene;
+
+	Delete();
 }
 
 void GameManager::Update()

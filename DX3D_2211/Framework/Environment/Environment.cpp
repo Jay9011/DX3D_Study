@@ -9,10 +9,13 @@ Environment::Environment()
 
 	lightBuffer = new LightBuffer();
 	mainCamera = new Camera();
+	mainCamera->tag = "MainCamera";
+	mainCamera->Load();
 }
 
 Environment::~Environment()
 {
+	mainCamera->Save();
 	delete mainCamera;
     delete projectionBuffer;
 	delete lightBuffer;

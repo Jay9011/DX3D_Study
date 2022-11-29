@@ -55,12 +55,32 @@ SamplerState samp : register(s0);
 cbuffer LightBuffer : register(b0)
 {
     float3 lightDirection;
+    float padding;
+    
+    float4 ambient;
+}
+
+cbuffer MaterialBuffer : register(b1)
+{
+    float4 mDiffuse;
+    float4 mSpecular;
+    float4 mAmbient;
+    
     float shininess;
+    
+    int hasDiffuseMap;
+    int hasSpecularMap;
+    int hasNormalMap;
 }
 
 float4 PS(PixelInput input) : SV_TARGET
 {
-    float4 albedo = diffuseMap.Sample(samp, input.uv);
+    float4 albedo = float4(1, 1, 1, 1);
+    
+    // DiffuseMap
+    [flatten]
+    if(hasDiffuseMap)
+        albedo = diffuseMap.Sample(samp, input.uv);
     
     float3 normal = normalize(input.normal);
     float3 light = normalize(lightDirection);
@@ -76,14 +96,18 @@ float4 PS(PixelInput input) : SV_TARGET
         float3 reflection = normalize(reflect(light, normal));
         specular = saturate(dot(-reflection, input.viewDir));
         
-        float4 specularIntensity = specularMap.Sample(samp, input.uv);
+        // SpecularMap
+        float4 specularIntensity = 1.0f;
+        [flatten]
+        if(hasSpecularMap)
+            specularIntensity = specularMap.Sample(samp, input.uv);
         
         specular = pow(specular, shininess) * specularIntensity;
     }
     
-    float4 diffuseColor = albedo * diffuse;
-    float4 specularColor = albedo * specular;
-    float4 ambientColor = albedo * 0.1f;
+    float4 diffuseColor = albedo * diffuse * mDiffuse;
+    float4 specularColor = albedo * specular * mSpecular;
+    float4 ambientColor = albedo * ambient * mAmbient;
     
     return diffuseColor + specularColor + ambientColor;
 }

@@ -27,4 +27,5 @@ void SphereScene::Render()
 
 void SphereScene::GUIRender()
 {
+    sphere->GetMaterial()->GUIRender();
 }

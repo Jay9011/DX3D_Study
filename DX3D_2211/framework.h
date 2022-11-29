@@ -19,7 +19,9 @@
 #define MOUSE_PRESS(k) ImGui::IsMouseDown(k)
 #define MOUSE_DOWN(k) ImGui::IsMouseClicked(k)
 #define MOUSE_DBCLICK(k) ImGui::IsMouseDoubleClicked(k)
-#define MOUSE_UP(k) ImGui::IsMouseReleased(k);
+#define MOUSE_UP(k) ImGui::IsMouseReleased(k)
+
+#define DIALOG ImGuiFileDialog::Instance()
 
 #include <windows.h>
 #include <string>
@@ -44,7 +46,7 @@
 #include <imgui.h>
 #include <imgui_impl_dx11.h>
 #include <imgui_impl_win32.h>
-//#include <ImGuiFileDialog.h>
+#include <ImGuiFileDialog.h>
 
 #pragma comment(lib, "Libraries/ImGui/imGui.lib")
 
