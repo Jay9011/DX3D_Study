@@ -28,4 +28,5 @@ private:
     LightBuffer* lightBuffer;
     
     SamplerState* samplerState;
+    BlendState* blendState;
 };

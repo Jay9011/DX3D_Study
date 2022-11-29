@@ -20,5 +20,5 @@ private:
 private:
     Terrain* terrain;
     SphereManager* sphereMgr;
-    //Quad* crosshair;
+    Quad* crosshair;
 };

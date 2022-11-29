@@ -18,7 +18,10 @@ Environment::Environment()
 Environment::~Environment()
 {
 	mainCamera->Save();
+
 	delete mainCamera;
+	delete blendState;
+	delete samplerState;
     delete projectionBuffer;
 	delete orthographicBuffer;
 	delete lightBuffer;
@@ -79,4 +82,8 @@ void Environment::CreateStates()
 {
 	samplerState = new SamplerState();
 	samplerState->PSSetState(0);
+
+	blendState = new BlendState();
+	blendState->Alpha(true);
+	blendState->SetState();
 }

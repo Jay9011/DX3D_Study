@@ -8,16 +8,16 @@ FirstPersonShooterScene::FirstPersonShooterScene()
 
     sphereMgr = new SphereManager();
 
-    /*crosshair = new Quad(100.0f, 100.0f);
+    crosshair = new Quad(100.0f, 100.0f);
     crosshair->GetMaterial()->SetDiffuseMap(L"Textures/UI/crosshair.png");
-    crosshair->position = { WIN_WIDTH * 0.5f, WIN_HEIGHT * 0.5f, 0.0f };*/
+    crosshair->position = { WIN_WIDTH * 0.5f, WIN_HEIGHT * 0.5f, 0.0f };
 }
 
 FirstPersonShooterScene::~FirstPersonShooterScene()
 {
     delete terrain;
     delete sphereMgr;
-    //delete crosshair;
+    delete crosshair;
 }
 
 void FirstPersonShooterScene::Update()
@@ -34,7 +34,7 @@ void FirstPersonShooterScene::Update()
 
     sphereMgr->Update();
 
-    //crosshair->UpdateWorld();
+    crosshair->UpdateWorld();
 }
 
 void FirstPersonShooterScene::Render()
@@ -45,7 +45,7 @@ void FirstPersonShooterScene::Render()
 
 void FirstPersonShooterScene::PostRender()
 {
-    //crosshair->Render();
+    crosshair->Render();
 }
 
 void FirstPersonShooterScene::GUIRender()
