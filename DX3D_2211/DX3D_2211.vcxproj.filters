@@ -147,6 +147,12 @@
     <ClInclude Include="Libraries\ImGui\ImGuiFileDialogConfig.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Scenes\PracticeScene\FirstPersonShooterScene.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\Custom\SphereManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DX3D_2211.cpp">
@@ -252,6 +258,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Libraries\ImGui\ImGuiFileDialog.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Scenes\PracticeScene\FirstPersonShooterScene.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\Custom\SphereManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

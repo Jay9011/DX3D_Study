@@ -6,6 +6,7 @@
 #include "Scenes/SphereScene.h"
 
 #include "Scenes/PracticeScene/TerrainRobotScene.h"
+#include "Scenes/PracticeScene/FirstPersonShooterScene.h"
 
 GameManager::GameManager()
 {
@@ -14,9 +15,10 @@ GameManager::GameManager()
 	//scene = new TutorialScene();
 	//scene = new CubeScene();
 	//scene = new TerrainScene();
-	scene = new SphereScene();
+	//scene = new SphereScene();
 
 	//scene = new TerrainRobotScene();
+	scene = new FirstPersonShooterScene();
 }
 
 GameManager::~GameManager()
@@ -39,6 +41,9 @@ void GameManager::Render()
 
 	Environment::Get()->Set();
 	scene->Render();
+
+	Environment::Get()->PostSet();
+	scene->PostRender();
 
 	ImGui_ImplDX11_NewFrame();
 	ImGui_ImplWin32_NewFrame();

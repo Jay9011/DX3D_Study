@@ -104,6 +104,7 @@ using namespace GameMath;
 #include "Objects/Basic/Sphere.h"
 
 #include "Objects/Custom/Robot.h"
+#include "Objects/Custom/SphereManager.h"
 
 #include "Objects/Landscape/Terrain.h"
 

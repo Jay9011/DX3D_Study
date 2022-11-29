@@ -13,6 +13,7 @@ public:
 
 private:
     void FreeMode();
+    void FPSMode();
 
 private:
     float moveSpeed = 50.0f;

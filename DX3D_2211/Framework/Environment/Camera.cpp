@@ -13,7 +13,8 @@ Camera::~Camera()
 
 void Camera::Update()
 {
-    FreeMode();
+    //FreeMode();
+    FPSMode();
 }
 
 void Camera::GUIRender()
@@ -63,6 +64,37 @@ void Camera::FreeMode()
             position += Up() * moveSpeed * DELTA;
         }
 
+        ImVec2 delta = ImGui::GetIO().MouseDelta;
+        rotation.x += delta.y * rotSpeed * DELTA;
+        rotation.y += delta.x * rotSpeed * DELTA;
+    }
+
+    UpdateWorld();
+    view = XMMatrixInverse(nullptr, world);
+    viewBuffer->Set(view, world);
+}
+
+void Camera::FPSMode()
+{
+    if (KEY_PRESS('W'))
+    {
+        position += Forward() * moveSpeed * DELTA;
+    }
+    if (KEY_PRESS('S'))
+    {
+        position -= Forward() * moveSpeed * DELTA;
+    }
+    if (KEY_PRESS('D'))
+    {
+        position += Right() * moveSpeed * DELTA;
+    }
+    if (KEY_PRESS('A'))
+    {
+        position -= Right() * moveSpeed * DELTA;
+    }
+
+    if (MOUSE_PRESS(1))
+    {
         ImVec2 delta = ImGui::GetIO().MouseDelta;
         rotation.x += delta.y * rotSpeed * DELTA;
         rotation.y += delta.x * rotSpeed * DELTA;

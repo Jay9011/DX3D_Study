@@ -182,10 +182,12 @@
     <ClInclude Include="Objects\Basic\Quad.h" />
     <ClInclude Include="Objects\Basic\Sphere.h" />
     <ClInclude Include="Objects\Custom\Robot.h" />
+    <ClInclude Include="Objects\Custom\SphereManager.h" />
     <ClInclude Include="Objects\Landscape\Terrain.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Scenes\CubeScene.h" />
+    <ClInclude Include="Scenes\PracticeScene\FirstPersonShooterScene.h" />
     <ClInclude Include="Scenes\PracticeScene\TerrainRobotScene.h" />
     <ClInclude Include="Scenes\Scene.h" />
     <ClInclude Include="Scenes\SphereScene.h" />
@@ -227,8 +229,10 @@
     <ClCompile Include="Objects\Basic\Quad.cpp" />
     <ClCompile Include="Objects\Basic\Sphere.cpp" />
     <ClCompile Include="Objects\Custom\Robot.cpp" />
+    <ClCompile Include="Objects\Custom\SphereManager.cpp" />
     <ClCompile Include="Objects\Landscape\Terrain.cpp" />
     <ClCompile Include="Scenes\CubeScene.cpp" />
+    <ClCompile Include="Scenes\PracticeScene\FirstPersonShooterScene.cpp" />
     <ClCompile Include="Scenes\PracticeScene\TerrainRobotScene.cpp" />
     <ClCompile Include="Scenes\SphereScene.cpp" />
     <ClCompile Include="Scenes\TerrainScene.cpp" />

@@ -11,6 +11,8 @@ Environment::Environment()
 	mainCamera = new Camera();
 	mainCamera->tag = "MainCamera";
 	mainCamera->Load();
+
+	uiViewBuffer = new MatrixBuffer();
 }
 
 Environment::~Environment()
@@ -18,13 +20,22 @@ Environment::~Environment()
 	mainCamera->Save();
 	delete mainCamera;
     delete projectionBuffer;
+	delete orthographicBuffer;
 	delete lightBuffer;
+	delete uiViewBuffer;
 }
 
 void Environment::Set()
 {
 	mainCamera->SetViewBuffer();
 	lightBuffer->SetPSBuffer(0);
+	projectionBuffer->SetVSBuffer(2);
+}
+
+void Environment::PostSet()
+{
+	uiViewBuffer->SetVSBuffer(1);
+	orthographicBuffer->SetVSBuffer(2);
 }
 
 void Environment::GUIRender()
@@ -44,7 +55,11 @@ void Environment::CreateProjection()
 
 	Matrix projection = XMMatrixPerspectiveFovLH(XM_PIDIV4, WIN_WIDTH / (float)WIN_HEIGHT, 0.1f, 1000.0f);
 	projectionBuffer->Set(projection);
-	projectionBuffer->SetVSBuffer(2);
+
+	orthographicBuffer = new MatrixBuffer();
+
+	Matrix ortho = XMMatrixOrthographicOffCenterLH(0.0f, WIN_WIDTH, 0.0f, WIN_HEIGHT, -1.0f, 1.0f);
+	orthographicBuffer->Set(ortho);
 }
 
 void Environment::SetViewport()

@@ -7,6 +7,7 @@ public:
     ~Environment();
 
     void Set();
+    void PostSet();
     void GUIRender();
 
     Camera* GetMainCamera() { return mainCamera; }
@@ -18,8 +19,13 @@ private:
 
 private:
     Camera* mainCamera;
-    MatrixBuffer* projectionBuffer;
-    LightBuffer* lightBuffer;
 
+    MatrixBuffer* projectionBuffer;
+    MatrixBuffer* orthographicBuffer;
+
+    MatrixBuffer* uiViewBuffer;
+
+    LightBuffer* lightBuffer;
+    
     SamplerState* samplerState;
 };

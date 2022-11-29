@@ -27,5 +27,4 @@ private:
 
     Material* material;
     Mesh* mesh;
-
 };
