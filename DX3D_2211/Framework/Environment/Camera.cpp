@@ -13,8 +13,8 @@ Camera::~Camera()
 
 void Camera::Update()
 {
-    //FreeMode();
-    FPSMode();
+    FreeMode();
+    //FPSMode();
 }
 
 void Camera::GUIRender()
