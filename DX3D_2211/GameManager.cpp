@@ -3,6 +3,7 @@
 #include "Scenes/TutorialScene.h"
 #include "Scenes/CubeScene.h"
 #include "Scenes/TerrainScene.h"
+#include "Scenes/SphereScene.h"
 
 #include "Scenes/PracticeScene/TerrainRobotScene.h"
 
@@ -12,9 +13,10 @@ GameManager::GameManager()
 
 	//scene = new TutorialScene();
 	//scene = new CubeScene();
-	scene = new TerrainScene();
-	//scene = new TerrainRobotScene();
+	//scene = new TerrainScene();
+	scene = new SphereScene();
 
+	//scene = new TerrainRobotScene();
 }
 
 GameManager::~GameManager()

@@ -56,11 +56,11 @@ void Camera::FreeMode()
         }
         if (KEY_PRESS('Q'))
         {
-            position += Up() * moveSpeed * DELTA;
+            position -= Up() * moveSpeed * DELTA;
         }
         if (KEY_PRESS('E'))
         {
-            position -= Up() * moveSpeed * DELTA;
+            position += Up() * moveSpeed * DELTA;
         }
 
         ImVec2 delta = ImGui::GetIO().MouseDelta;
