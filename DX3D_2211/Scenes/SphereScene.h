@@ -13,5 +13,5 @@ public:
 
 private:
     Sphere* sphere;
-
+    Quad* quad;
 };

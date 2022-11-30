@@ -9,6 +9,7 @@ public:
     void SetState();
 
     void Alpha(bool value);
+    void Additive();
 
     void Changed();
 

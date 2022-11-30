@@ -26,4 +26,6 @@ private:
 
     vector<VertexType> vertices;
     vector<UINT> indices;
+
+    BlendState* blendState[2];
 };

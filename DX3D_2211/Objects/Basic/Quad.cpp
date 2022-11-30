@@ -9,6 +9,10 @@ Quad::Quad(float width, float height) :
     CreateMesh();
 
     worldBuffer = new MatrixBuffer();
+
+    blendState[0] = new BlendState();
+    blendState[1] = new BlendState();
+    blendState[1]->Additive();
 }
 
 Quad::~Quad()
@@ -26,7 +30,11 @@ void Quad::Render()
     mesh->IASet();
     material->Set();
 
+    blendState[1]->SetState();
+
     DC->DrawIndexed(indices.size(), 0, 0);
+
+    blendState[0]->SetState();
 }
 
 void Quad::CreateMesh()

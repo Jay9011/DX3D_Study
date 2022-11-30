@@ -20,10 +20,10 @@ private:
 private:
     Camera* mainCamera;
 
+    ViewBuffer* uiViewBuffer;
+
     MatrixBuffer* projectionBuffer;
     MatrixBuffer* orthographicBuffer;
-
-    MatrixBuffer* uiViewBuffer;
 
     LightBuffer* lightBuffer;
     
