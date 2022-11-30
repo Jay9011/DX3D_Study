@@ -15,10 +15,10 @@ GameManager::GameManager()
 	//scene = new TutorialScene();
 	//scene = new CubeScene();
 	//scene = new TerrainScene();
-	//scene = new SphereScene();
+	scene = new SphereScene();
 
 	//scene = new TerrainRobotScene();
-	scene = new FirstPersonShooterScene();
+	//scene = new FirstPersonShooterScene();
 }
 
 GameManager::~GameManager()

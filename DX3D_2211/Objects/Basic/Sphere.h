@@ -3,7 +3,7 @@
 class Sphere : public Transform
 {
 private:
-    typedef VertexUVNormal VertexType;
+    typedef VertexUVNormalTangent VertexType;
 
 public:
 	Sphere(float radius = 1.0f, UINT sliceCount = 20, UINT stackCount = 10);
@@ -15,6 +15,7 @@ public:
 
 private:
     void CreateMesh();
+    void CreateTangent();
 
 private:
     float radius;

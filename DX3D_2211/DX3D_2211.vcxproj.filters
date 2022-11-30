@@ -289,6 +289,7 @@
     <FxCompile Include="Shaders\Practice\RobotShader.hlsl" />
     <FxCompile Include="Shaders\Specular.hlsl" />
     <FxCompile Include="Shaders\Terrain.hlsl" />
+    <FxCompile Include="Shaders\NormalMapping.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libraries\DirectXTex\DirectXTex.lib" />
