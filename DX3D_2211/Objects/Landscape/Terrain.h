@@ -3,7 +3,7 @@
 class Terrain : public Transform
 {
 private:
-    typedef VertexUVNormal VertexType;
+    typedef VertexUVNormalTangent VertexType;
     const float MAX_HEIGHT = 20.0f;
 
 public:
@@ -15,10 +15,14 @@ public:
     float GetHeight(Vector3 position);
 
     Material* GetMaterial() { return material; }
+    
+    UINT GetWidth() { return width; }
+    UINT GetLength() { return height; }
 
 private:
     void CreateMesh();
     void CreateNormal();
+    void CreateTangent();
 
 private:
     UINT width = 10, height = 10;

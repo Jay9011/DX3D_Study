@@ -14,11 +14,17 @@ public:
     virtual void PostRender() override;
     virtual void GUIRender() override;
 
-private:
-    void FirstPersonView();
+    void SphereSpawn();
+    void CollideCheck();
 
 private:
     Terrain* terrain;
-    SphereManager* sphereMgr;
     Quad* crosshair;
+
+    int terrainWidth = 0, terrainLength = 0;
+
+    SphereManager* sphereMgr;
+    SphereSpawner* sphereSpawner;
+
+    vector<bool>* isActiveSphere;
 };

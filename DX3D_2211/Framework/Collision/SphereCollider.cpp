@@ -55,7 +55,8 @@ bool SphereCollider::BoxCollision(BoxCollider* collider)
 
 bool SphereCollider::SphereCollision(SphereCollider* collider)
 {
-    return false;
+    float dist = (this->GlobalPos() - collider->GlobalPos()).Length();
+    return dist <= (this->Radius() + collider->Radius());
 }
 
 bool SphereCollider::CapsuleCollision(CapsuleCollider* collider)

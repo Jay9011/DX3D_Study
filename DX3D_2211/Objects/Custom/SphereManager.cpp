@@ -2,14 +2,20 @@
 #include "SphereManager.h"
 
 SphereManager::SphereManager(UINT poolCount) :
-    SIZE(poolCount)
+    COUNT(poolCount)
 {
-    spheres.resize(poolCount);
-    isActive.resize(poolCount);
-    dir.resize(poolCount);
-    for (int i = 0; i < poolCount; i++)
+    spheres.resize(COUNT);
+    isActive.resize(COUNT);
+    dir.resize(COUNT);
+    colliders.resize(COUNT);
+    for (int i = 0; i < COUNT; i++)
     {
-        spheres[i] = new Sphere(10.f);
+        spheres[i] = new Sphere(RADIUS);
+        spheres[i]->GetMaterial()->SetDiffuseMap(L"Textures/Landscape/Stones.png");
+        spheres[i]->GetMaterial()->SetNormalMap(L"Textures/Landscape/Stones_normal.png");
+
+        colliders[i] = new SphereCollider(RADIUS);
+        colliders[i]->SetParent(spheres[i]);
     }
 }
 
@@ -20,11 +26,17 @@ SphereManager::~SphereManager()
         delete sphere;
     }
     spheres.clear();
+
+    for (auto& collider : colliders)
+    {
+        delete collider;
+    }
+    colliders.clear();
 }
 
 void SphereManager::Update()
 {
-    for (int i = 0; i < SIZE; i++)
+    for (int i = 0; i < COUNT; i++)
     {
         if (isActive[i])
         {
@@ -32,26 +44,28 @@ void SphereManager::Update()
             if (spheres[i]->position.x <= -1000 || spheres[i]->position.x >= 3000 || spheres[i]->position.z <= -1000 || spheres[i]->position.z >= 3000)
                 isActive[i] = false;
 
-            spheres[i]->position += dir[i] * speed;
+            spheres[i]->position += dir[i] * SPEED * DELTA;
             spheres[i]->UpdateWorld();
+            colliders[i]->UpdateWorld();
         }
     }
 }
 
 void SphereManager::Render()
 {
-    for (int i = 0; i < SIZE; i++)
+    for (int i = 0; i < COUNT; i++)
     {
         if (isActive[i])
         {
             spheres[i]->Render();
+            colliders[i]->Render();
         }
     }
 }
 
 void SphereManager::Shoot(Vector3 pos, Vector3 dir)
 {
-    for (int i = 0; i < SIZE; i++)
+    for (int i = 0; i < COUNT; i++)
     {
         if (!isActive[i])
         {
@@ -61,4 +75,9 @@ void SphereManager::Shoot(Vector3 pos, Vector3 dir)
             break;
         }
     }
+}
+
+void SphereManager::Inactive(UINT index)
+{
+    isActive[index] = false;
 }

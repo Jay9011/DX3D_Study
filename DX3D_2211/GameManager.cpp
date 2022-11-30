@@ -17,10 +17,10 @@ GameManager::GameManager()
 	//scene = new CubeScene();
 	//scene = new TerrainScene();
 	//scene = new SphereScene();
-	scene = new CollisionScene();
+	//scene = new CollisionScene();
 
 	//scene = new TerrainRobotScene();
-	//scene = new FirstPersonShooterScene();
+	scene = new FirstPersonShooterScene();
 }
 
 GameManager::~GameManager()

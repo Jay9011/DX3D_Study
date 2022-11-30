@@ -80,8 +80,4 @@ void Environment::CreateStates()
 {
 	samplerState = new SamplerState();
 	samplerState->PSSetState(0);
-
-	blendState = new BlendState();
-	blendState->Alpha(true);
-	blendState->SetState();
 }
