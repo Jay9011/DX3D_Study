@@ -26,7 +26,7 @@ void Transform::UpdateWorld()
 
 void Transform::PostRender()
 {
-    /*if (ImGui::TreeNode(tag.c_str()))
+    if (ImGui::TreeNode(tag.c_str()))
     {
         ImGui::Checkbox(tag.c_str(), &isActive);
         ImGui::DragFloat3((tag + ":Pos").c_str(), (float*)&position, 0.1f);
@@ -44,7 +44,7 @@ void Transform::PostRender()
             Load();
 
         ImGui::TreePop();
-    }*/
+    }
 }
 
 Vector3 Transform::Right()

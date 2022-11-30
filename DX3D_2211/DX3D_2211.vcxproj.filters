@@ -153,6 +153,21 @@
     <ClInclude Include="Objects\Custom\SphereManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Framework\Collision\Collider.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Collision\SphereCollider.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Collision\BoxCollider.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Scenes\CollisionScene.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Collision\CapsuleCollider.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DX3D_2211.cpp">
@@ -266,6 +281,21 @@
     <ClCompile Include="Objects\Custom\SphereManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Framework\Collision\Collider.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Collision\SphereCollider.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Collision\BoxCollider.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Scenes\CollisionScene.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Collision\CapsuleCollider.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DX3D_2211.rc">
@@ -290,6 +320,7 @@
     <FxCompile Include="Shaders\Specular.hlsl" />
     <FxCompile Include="Shaders\Terrain.hlsl" />
     <FxCompile Include="Shaders\NormalMapping.hlsl" />
+    <FxCompile Include="Shaders\Collider.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libraries\DirectXTex\DirectXTex.lib" />
