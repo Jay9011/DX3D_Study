@@ -14,6 +14,8 @@ public:
 
     void Fire(Vector3 pos, Vector3 direction);
 
+    Collider* GetCollider() { return collider; }
+
 private:
     float speed = 50.0f;
     float time = 0.0f;

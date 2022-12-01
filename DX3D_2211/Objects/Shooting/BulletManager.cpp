@@ -43,3 +43,17 @@ void BulletManager::CreateBullet(UINT poolCount)
         bullet = new Bullet();
     }
 }
+
+bool BulletManager::Collision(Collider* collider)
+{
+    for (Bullet* bullet : bullets)
+    {
+        if (bullet->GetCollider()->Collision(collider))
+        {
+            bullet->isActive = false;
+            return true;
+        }
+    }
+
+    return false;
+}

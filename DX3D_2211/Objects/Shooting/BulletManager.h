@@ -16,6 +16,8 @@ public:
 
     void CreateBullet(UINT poolCount = 30);
 
+    bool Collision(Collider* collider);
+
 private:
     vector<Bullet*> bullets;
 

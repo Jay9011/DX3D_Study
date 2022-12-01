@@ -9,6 +9,8 @@ public:
     void Update();
     void Render();
 
+    Collider* GetCollider() { return collider; }
+
 private:
     float hp;
 

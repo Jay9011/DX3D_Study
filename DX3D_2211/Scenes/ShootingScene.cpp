@@ -12,6 +12,8 @@ ShootingScene::ShootingScene()
     ShowCursor(false);
 
     BulletManager::Get()->CreateBullet();
+    TargetManager::Get()->CreateTargets();
+    TargetManager::Get()->SetTerrain(terrain);
 }
 
 ShootingScene::~ShootingScene()
@@ -20,6 +22,7 @@ ShootingScene::~ShootingScene()
     delete player;
 
     BulletManager::Delete();
+    TargetManager::Delete();
 }
 
 void ShootingScene::Update()
@@ -27,11 +30,13 @@ void ShootingScene::Update()
     player->Update();
 
     BulletManager::Get()->Update();
+    TargetManager::Get()->Update();
 }
 
 void ShootingScene::Render()
 {
     BulletManager::Get()->Render();
+    TargetManager::Get()->Render();
 
     terrain->Render();
 }

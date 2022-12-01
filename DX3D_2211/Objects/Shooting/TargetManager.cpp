@@ -25,6 +25,29 @@ void TargetManager::Render()
         target->Render();
 }
 
+void TargetManager::CreateTargets(UINT poolCount)
+{
+    targets.resize(poolCount);
+
+    for (Target*& target : targets)
+    {
+        target = new Target();
+    }
+}
+
+Target* TargetManager::CollisionBullet()
+{
+    for (Target* target : targets)
+    {
+        if (BulletManager::Get()->Collision(target->GetCollider()))
+        {
+            return target;
+        }
+    }
+
+    return nullptr;
+}
+
 void TargetManager::Spawn()
 {
     time += DELTA;

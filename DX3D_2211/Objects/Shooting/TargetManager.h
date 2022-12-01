@@ -7,7 +7,7 @@ private:
 
     const float SPAWN_TIME = 1.0f;
     const float MIN_SIZE = 1.0f;
-    const float MAX_SIZE = 10.0f;
+    const float MAX_SIZE = 3.0f;
 
     TargetManager();
     ~TargetManager();
@@ -15,6 +15,10 @@ private:
 public:
     void Update();
     void Render();
+
+    void CreateTargets(UINT poolCount = 50);
+
+    Target* CollisionBullet();
 
     void SetTerrain(Terrain* terrain) { this->terrain = terrain; }
 

@@ -18,6 +18,7 @@ void Player::Update()
 {
     MoveControl();
     FireControl();
+    CollisionTarget();
 }
 
 void Player::PostRender()
@@ -71,4 +72,12 @@ void Player::FireControl()
     {
         BulletManager::Get()->Fire(CAM->position, CAM->Forward());
     }
+}
+
+void Player::CollisionTarget()
+{
+    Target* target = TargetManager::Get()->CollisionBullet();
+
+    if(target)
+        target->isActive = false;
 }

@@ -14,6 +14,7 @@ public:
 private:
 	void MoveControl();
 	void FireControl();
+	void CollisionTarget();
 
 private:
 	float moveSpeed = 50.f;
