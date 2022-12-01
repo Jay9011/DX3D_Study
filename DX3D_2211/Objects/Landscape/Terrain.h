@@ -18,6 +18,7 @@ public:
     
     UINT GetWidth() { return width; }
     UINT GetLength() { return height; }
+    Float2 GetSize() { return Float2(width, height); }
 
 private:
     void CreateMesh();

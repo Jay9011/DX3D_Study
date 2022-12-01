@@ -117,6 +117,8 @@ using namespace GameMath;
 
 #include "Objects/Shooting/Bullet.h"
 #include "Objects/Shooting/BulletManager.h"
+#include "Objects/Shooting/Target.h"
+#include "Objects/Shooting/TargetManager.h"
 #include "Objects/Shooting/Player.h"
 
 //Scene Header

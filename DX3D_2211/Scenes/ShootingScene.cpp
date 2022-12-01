@@ -31,9 +31,9 @@ void ShootingScene::Update()
 
 void ShootingScene::Render()
 {
-    terrain->Render();
-
     BulletManager::Get()->Render();
+
+    terrain->Render();
 }
 
 void ShootingScene::PostRender()

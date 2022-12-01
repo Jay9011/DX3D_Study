@@ -27,6 +27,7 @@ void Bullet::Update()
         isActive = false;
 
     UpdateWorld();
+    collider->UpdateWorld();
 }
 
 void Bullet::Render()

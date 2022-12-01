@@ -192,6 +192,8 @@
     <ClInclude Include="Objects\Shooting\Bullet.h" />
     <ClInclude Include="Objects\Shooting\BulletManager.h" />
     <ClInclude Include="Objects\Shooting\Player.h" />
+    <ClInclude Include="Objects\Shooting\Target.h" />
+    <ClInclude Include="Objects\Shooting\TargetManager.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Scenes\CollisionScene.h" />
@@ -249,6 +251,8 @@
     <ClCompile Include="Objects\Shooting\Bullet.cpp" />
     <ClCompile Include="Objects\Shooting\BulletManager.cpp" />
     <ClCompile Include="Objects\Shooting\Player.cpp" />
+    <ClCompile Include="Objects\Shooting\Target.cpp" />
+    <ClCompile Include="Objects\Shooting\TargetManager.cpp" />
     <ClCompile Include="Scenes\CollisionScene.cpp" />
     <ClCompile Include="Scenes\CubeScene.cpp" />
     <ClCompile Include="Scenes\PracticeScene\FirstPersonShooterScene.cpp" />

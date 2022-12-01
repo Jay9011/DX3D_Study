@@ -2,10 +2,13 @@
 
 class BulletManager : public Singleton<BulletManager>
 {
-public:
+private:
+    friend class Singleton;
+
     BulletManager();
     ~BulletManager();
 
+public:
     void Update();
     void Render();
 
