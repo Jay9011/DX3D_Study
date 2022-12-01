@@ -13,6 +13,7 @@ public:
 
 private:
 	void MoveControl();
+	void FireControl();
 
 private:
 	float moveSpeed = 50.f;

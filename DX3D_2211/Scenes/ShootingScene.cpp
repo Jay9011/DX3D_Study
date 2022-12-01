@@ -10,22 +10,30 @@ ShootingScene::ShootingScene()
     player->SetTerrain(terrain);
 
     ShowCursor(false);
+
+    BulletManager::Get()->CreateBullet();
 }
 
 ShootingScene::~ShootingScene()
 {
     delete terrain;
     delete player;
+
+    BulletManager::Delete();
 }
 
 void ShootingScene::Update()
 {
     player->Update();
+
+    BulletManager::Get()->Update();
 }
 
 void ShootingScene::Render()
 {
     terrain->Render();
+
+    BulletManager::Get()->Render();
 }
 
 void ShootingScene::PostRender()

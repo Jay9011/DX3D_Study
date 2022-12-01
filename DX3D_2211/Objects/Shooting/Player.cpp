@@ -17,6 +17,7 @@ Player::~Player()
 void Player::Update()
 {
     MoveControl();
+    FireControl();
 }
 
 void Player::PostRender()
@@ -62,4 +63,12 @@ void Player::MoveControl()
     ImVec2 delta = ImGui::GetIO().MouseDelta;
     cam->rotation.x += delta.y * rotSpeed * DELTA;
     cam->rotation.y += delta.x * rotSpeed * DELTA;
+}
+
+void Player::FireControl()
+{
+    if (MOUSE_DOWN(0))
+    {
+        BulletManager::Get()->Fire(CAM->position, CAM->Forward());
+    }
 }

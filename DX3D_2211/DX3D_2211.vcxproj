@@ -189,6 +189,8 @@
     <ClInclude Include="Objects\Custom\SphereManager.h" />
     <ClInclude Include="Objects\Custom\SphereSpawner.h" />
     <ClInclude Include="Objects\Landscape\Terrain.h" />
+    <ClInclude Include="Objects\Shooting\Bullet.h" />
+    <ClInclude Include="Objects\Shooting\BulletManager.h" />
     <ClInclude Include="Objects\Shooting\Player.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="GameManager.h" />
@@ -244,6 +246,8 @@
     <ClCompile Include="Objects\Custom\SphereManager.cpp" />
     <ClCompile Include="Objects\Custom\SphereSpawner.cpp" />
     <ClCompile Include="Objects\Landscape\Terrain.cpp" />
+    <ClCompile Include="Objects\Shooting\Bullet.cpp" />
+    <ClCompile Include="Objects\Shooting\BulletManager.cpp" />
     <ClCompile Include="Objects\Shooting\Player.cpp" />
     <ClCompile Include="Scenes\CollisionScene.cpp" />
     <ClCompile Include="Scenes\CubeScene.cpp" />

@@ -15,7 +15,7 @@ public:
     void Fire(Vector3 pos, Vector3 direction);
 
 private:
-    float speed = 1.0f;
+    float speed = 50.0f;
     float time = 0.0f;
 
     Vector3 direction;
