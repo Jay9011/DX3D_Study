@@ -55,8 +55,8 @@ void Environment::GUIRender()
 void Environment::CreateProjection()
 {
 	projectionBuffer = new MatrixBuffer();
-	Matrix perspective = XMMatrixPerspectiveFovLH(XM_PIDIV4, WIN_WIDTH / (float)WIN_HEIGHT, 0.1f, 1000.0f);
-	projectionBuffer->Set(perspective);
+	projection = XMMatrixPerspectiveFovLH(XM_PIDIV4, WIN_WIDTH / (float)WIN_HEIGHT, 0.1f, 1000.0f);
+	projectionBuffer->Set(projection);
 
 	orthographicBuffer = new MatrixBuffer();
 	Matrix ortho = XMMatrixOrthographicOffCenterLH(0.0f, WIN_WIDTH, 0.0f, WIN_HEIGHT, -1.0f, 1.0f);

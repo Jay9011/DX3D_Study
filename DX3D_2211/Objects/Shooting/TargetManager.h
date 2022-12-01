@@ -15,6 +15,7 @@ private:
 public:
     void Update();
     void Render();
+    void PostRender();
 
     void CreateTargets(UINT poolCount = 50);
 

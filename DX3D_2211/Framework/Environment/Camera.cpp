@@ -35,6 +35,23 @@ void Camera::SetViewBuffer()
     viewBuffer->SetVSBuffer(1);
 }
 
+Vector3 Camera::WorldToScreenPoint(Vector3 worldPos)
+{
+    Vector3 screenPos;
+
+    Matrix projection = Environment::Get()->GetProjection();
+
+    screenPos = XMVector3TransformCoord(worldPos, view);
+    screenPos = XMVector3TransformCoord(screenPos, projection);
+    // NDC = -1 ~ 1
+    // Screen = 0 ~ win_width
+
+    screenPos.x = (screenPos.x + 1.0f) * 0.5f * WIN_WIDTH;
+    screenPos.y = (screenPos.y + 1.0f) * 0.5f * WIN_HEIGHT;
+
+    return screenPos;
+}
+
 void Camera::FreeMode()
 {
     if (MOUSE_PRESS(1))

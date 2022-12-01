@@ -11,6 +11,8 @@ public:
 
     void SetViewBuffer();
 
+    Vector3 WorldToScreenPoint(Vector3 worldPos);
+
 private:
     void FreeMode();
     void FPSMode();

@@ -10,6 +10,8 @@ public:
     void PostSet();
     void GUIRender();
 
+    Matrix GetProjection() { return projection; }
+
     Camera* GetMainCamera() { return mainCamera; }
 
 private:
@@ -29,4 +31,6 @@ private:
     
     SamplerState* samplerState;
     BlendState* blendState;
+
+    Matrix projection;
 };

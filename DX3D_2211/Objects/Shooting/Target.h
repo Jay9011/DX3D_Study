@@ -8,6 +8,7 @@ public:
 
     void Update();
     void Render();
+    void PostRender();
 
     Collider* GetCollider() { return collider; }
 
@@ -15,5 +16,5 @@ private:
     float hp;
 
     Collider* collider;
-
+    Quad* hpBar;
 };

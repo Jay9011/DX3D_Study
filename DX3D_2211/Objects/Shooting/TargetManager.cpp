@@ -25,6 +25,12 @@ void TargetManager::Render()
         target->Render();
 }
 
+void TargetManager::PostRender()
+{
+    for (Target* target : targets)
+        target->PostRender();
+}
+
 void TargetManager::CreateTargets(UINT poolCount)
 {
     targets.resize(poolCount);

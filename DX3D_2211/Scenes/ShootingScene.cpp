@@ -44,6 +44,7 @@ void ShootingScene::Render()
 void ShootingScene::PostRender()
 {
     player->PostRender();
+    TargetManager::Get()->PostRender();
 }
 
 void ShootingScene::GUIRender()
