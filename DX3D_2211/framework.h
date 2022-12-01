@@ -115,6 +115,8 @@ using namespace GameMath;
 
 #include "Objects/Landscape/Terrain.h"
 
+#include "Objects/Shooting/Bullet.h"
+#include "Objects/Shooting/BulletManager.h"
 #include "Objects/Shooting/Player.h"
 
 //Scene Header

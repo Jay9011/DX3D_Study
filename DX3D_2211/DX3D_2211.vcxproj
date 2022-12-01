@@ -189,6 +189,7 @@
     <ClInclude Include="Objects\Custom\SphereManager.h" />
     <ClInclude Include="Objects\Custom\SphereSpawner.h" />
     <ClInclude Include="Objects\Landscape\Terrain.h" />
+    <ClInclude Include="Objects\Shooting\Player.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Scenes\CollisionScene.h" />
@@ -243,6 +244,7 @@
     <ClCompile Include="Objects\Custom\SphereManager.cpp" />
     <ClCompile Include="Objects\Custom\SphereSpawner.cpp" />
     <ClCompile Include="Objects\Landscape\Terrain.cpp" />
+    <ClCompile Include="Objects\Shooting\Player.cpp" />
     <ClCompile Include="Scenes\CollisionScene.cpp" />
     <ClCompile Include="Scenes\CubeScene.cpp" />
     <ClCompile Include="Scenes\PracticeScene\FirstPersonShooterScene.cpp" />

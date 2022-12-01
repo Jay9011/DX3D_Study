@@ -4,8 +4,12 @@
 ShootingScene::ShootingScene()
 {
     terrain = new Terrain();
+    terrain->GetMaterial()->SetDiffuseMap(L"Textures/Landscape/Fieldstone_DM.tga");
+
     player = new Player();
     player->SetTerrain(terrain);
+
+    ShowCursor(false);
 }
 
 ShootingScene::~ShootingScene()

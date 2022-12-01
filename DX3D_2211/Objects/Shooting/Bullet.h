@@ -1,0 +1,25 @@
+#pragma once
+
+class Bullet : public Sphere
+{
+private:
+    const float LIFE_TIME = 5.0f;
+
+public:
+    Bullet();
+    ~Bullet();
+
+    void Update();
+    void Render();
+
+    void Fire(Vector3 pos, Vector3 direction);
+
+private:
+    float speed = 1.0f;
+    float time = 0.0f;
+
+    Vector3 direction;
+
+    Collider* collider;
+
+};
