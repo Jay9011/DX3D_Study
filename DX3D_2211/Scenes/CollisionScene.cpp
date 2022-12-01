@@ -20,6 +20,17 @@ CollisionScene::~CollisionScene()
 
 void CollisionScene::Update()
 {
+    if (colliders[0]->Collision(colliders[1]))
+    {
+        colliders[0]->SetColor(1, 0, 0);
+        colliders[1]->SetColor(1, 0, 0);
+    }
+    else
+    {
+        colliders[0]->SetColor(0, 1, 0);
+        colliders[1]->SetColor(0, 1, 0);
+    }
+
     for (Collider* collider : colliders)
         collider->UpdateWorld();
 }

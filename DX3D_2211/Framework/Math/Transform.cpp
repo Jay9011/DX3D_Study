@@ -65,6 +65,17 @@ Vector3 Transform::Forward()
     return XMVector3Normalize(XMVector3TransformNormal(temp.data, world));
 }
 
+bool Transform::Active()
+{
+    if (!parentTransform)
+        return isActive;
+
+    if (!isActive)
+        return false;
+
+    return parentTransform->Active();
+}
+
 void Transform::Save()
 {    
     BinaryWriter w("TextData/Transform/" + tag + ".trf");

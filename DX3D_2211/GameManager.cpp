@@ -5,6 +5,7 @@
 #include "Scenes/TerrainScene.h"
 #include "Scenes/SphereScene.h"
 #include "Scenes/CollisionScene.h"
+#include "Scenes/ShootingScene.h"
 
 #include "Scenes/PracticeScene/TerrainRobotScene.h"
 #include "Scenes/PracticeScene/FirstPersonShooterScene.h"
@@ -18,9 +19,10 @@ GameManager::GameManager()
 	//scene = new TerrainScene();
 	//scene = new SphereScene();
 	//scene = new CollisionScene();
+	scene = new ShootingScene();
 
 	//scene = new TerrainRobotScene();
-	scene = new FirstPersonShooterScene();
+	//scene = new FirstPersonShooterScene();
 }
 
 GameManager::~GameManager()

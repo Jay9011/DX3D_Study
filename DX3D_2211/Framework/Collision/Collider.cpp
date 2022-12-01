@@ -17,7 +17,7 @@ Collider::~Collider()
 
 void Collider::Render()
 {
-    if (!isActive) return;
+    if (!Active()) return;
 
     worldBuffer->Set(world);
     worldBuffer->SetVSBuffer(0);
@@ -30,8 +30,8 @@ void Collider::Render()
 
 bool Collider::Collision(Collider* collider)
 {
-    if (!isActive) return false;
-    if (!collider->isActive) return false;
+    if (!Active()) return false;
+    if (!collider->Active()) return false;
 
     UpdateWorld();
     collider->UpdateWorld();

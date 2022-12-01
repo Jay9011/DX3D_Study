@@ -196,6 +196,7 @@
     <ClInclude Include="Scenes\PracticeScene\FirstPersonShooterScene.h" />
     <ClInclude Include="Scenes\PracticeScene\TerrainRobotScene.h" />
     <ClInclude Include="Scenes\Scene.h" />
+    <ClInclude Include="Scenes\ShootingScene.h" />
     <ClInclude Include="Scenes\SphereScene.h" />
     <ClInclude Include="Scenes\TerrainScene.h" />
     <ClInclude Include="Scenes\TutorialScene.h" />
@@ -246,6 +247,7 @@
     <ClCompile Include="Scenes\CubeScene.cpp" />
     <ClCompile Include="Scenes\PracticeScene\FirstPersonShooterScene.cpp" />
     <ClCompile Include="Scenes\PracticeScene\TerrainRobotScene.cpp" />
+    <ClCompile Include="Scenes\ShootingScene.cpp" />
     <ClCompile Include="Scenes\SphereScene.cpp" />
     <ClCompile Include="Scenes\TerrainScene.cpp" />
     <ClCompile Include="Scenes\TutorialScene.cpp" />

@@ -23,6 +23,8 @@
 
 #define DIALOG ImGuiFileDialog::Instance()
 
+#define CAM Environment::Get()->GetMainCamera()
+
 #include <windows.h>
 #include <string>
 #include <vector>
@@ -112,6 +114,8 @@ using namespace GameMath;
 #include "Objects/Custom/SphereSpawner.h"
 
 #include "Objects/Landscape/Terrain.h"
+
+#include "Objects/Shooting/Player.h"
 
 //Scene Header
 #include "Scenes/Scene.h"

@@ -19,6 +19,9 @@ protected:
     Vector3 globalPosition;
     Vector3 globalRotation;
     Vector3 globalScale;
+
+    Transform* parentTransform;
+
 public:
     Transform();
     virtual ~Transform();
@@ -31,6 +34,8 @@ public:
     Vector3 Up();
     Vector3 Forward();
 
+    bool Active();
+
     Vector3 GlobalPos() { return globalPosition; }
     Vector3 GlobalRot() { return globalRotation; }
     Vector3 GlobalScale () { return globalScale; }
@@ -38,7 +43,11 @@ public:
     Matrix& GetWorld() { return world; }
 
     void SetParent(Matrix* parent) { this->parent = parent; }
-    void SetParent(Transform* transform) { parent = &transform->GetWorld(); }
+    void SetParent(Transform* transform) 
+    { 
+        parent = &transform->GetWorld();
+        parentTransform = transform;
+    }
 
     void SetPivot(float x, float y, float z) { pivot = { x, y, z }; }
 

@@ -87,8 +87,8 @@ void Terrain::CreateMesh()
 		{
 			VertexType vertex;
 			vertex.pos = Float3(x, 0, z);
-			vertex.uv.x = x * 10 / (float)(width - 1);
-			vertex.uv.y = z * 10 / (float)(height - 1);
+			vertex.uv.x = x / (float)(width - 1);
+			vertex.uv.y = z / (float)(height - 1);
 
 			UINT index = width * z + x;
 			vertex.pos.y = pixels[index].x * MAX_HEIGHT;
