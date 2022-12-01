@@ -6,7 +6,7 @@ Terrain::Terrain()
 	//material = new Material(L"Shaders/Specular.hlsl");
 	material = new Material(L"Shaders/NormalMapping.hlsl");
 
-	heightMap = Texture::Add(L"Textures/HeightMaps/HeightMap.png");
+	heightMap = Texture::Add(L"Textures/HeightMaps/HeightMap2.png");
 
 	CreateMesh();
 

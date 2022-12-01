@@ -7,7 +7,7 @@ Bullet::Bullet()
     collider = new SphereCollider();
     collider->SetParent(this);
 
-    scale *= 0.1f;
+    scale *= 0.5f;
 }
 
 Bullet::~Bullet()
@@ -41,9 +41,12 @@ void Bullet::Render()
 
 void Bullet::Fire(Vector3 pos, Vector3 direction)
 {
-    isActive = true;
-
     time = 0.0f;
     position = pos;
     this->direction = direction;
+
+    UpdateWorld();
+    collider->UpdateWorld();
+
+    isActive = true;
 }

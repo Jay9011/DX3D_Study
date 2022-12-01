@@ -5,9 +5,9 @@ class TargetManager : public Singleton<TargetManager>
 private:
     friend class Singleton;
 
-    const float SPAWN_TIME = 1.0f;
+    const float SPAWN_TIME = 3.0f;
     const float MIN_SIZE = 1.0f;
-    const float MAX_SIZE = 3.0f;
+    const float MAX_SIZE = 5.0f;
 
     TargetManager();
     ~TargetManager();

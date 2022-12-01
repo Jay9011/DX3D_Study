@@ -41,8 +41,13 @@
 
 //DirectXTex
 #include <Libraries/DirectXTex/DirectXTex.h>
-
 #pragma comment(lib, "Libraries/DirectXTex/DirectXTex.lib")
+
+//DirextWrite
+#include <d2d1_2.h>
+#include <dwrite.h>
+#pragma comment(lib, "d2d1.lib")
+#pragma comment(lib, "dwrite.lib")
 
 //ImGui
 #include <imgui.h>
@@ -67,6 +72,7 @@ typedef XMFLOAT4X4 Float4x4;
 #include "Framework/Utility/Utility.h"
 #include "Framework/Utility/BinaryReader.h"
 #include "Framework/Utility/BinaryWriter.h"
+#include "Framework/Utility/Font.h"
 
 using namespace Utility;
 

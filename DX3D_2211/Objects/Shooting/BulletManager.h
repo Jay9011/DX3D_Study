@@ -12,11 +12,11 @@ public:
     void Update();
     void Render();
 
-    void Fire(Vector3 pos, Vector3 dir);
+    void Fire(Vector3 pos, Vector3 dir, Bullet::TYPE owner);
 
-    void CreateBullet(UINT poolCount = 30);
+    void CreateBullet(UINT poolCount = 50);
 
-    bool Collision(Collider* collider);
+    bool Collision(Collider* collider, Bullet::TYPE passType);
 
 private:
     vector<Bullet*> bullets;

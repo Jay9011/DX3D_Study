@@ -6,6 +6,12 @@ private:
     const float LIFE_TIME = 5.0f;
 
 public:
+    enum TYPE {
+        PLAYER_BULLET,
+        ENEMY_BULLET
+    };
+
+public:
     Bullet();
     ~Bullet();
 
@@ -16,12 +22,16 @@ public:
 
     Collider* GetCollider() { return collider; }
 
+    void SetOwner(Bullet::TYPE owner) { bulletType = owner; }
+    Bullet::TYPE GetBulletType() { return bulletType; }
+
 private:
-    float speed = 50.0f;
+    float speed = 100.0f;
     float time = 0.0f;
 
     Vector3 direction;
 
     Collider* collider;
 
+    Bullet::TYPE bulletType = Bullet::PLAYER_BULLET;
 };

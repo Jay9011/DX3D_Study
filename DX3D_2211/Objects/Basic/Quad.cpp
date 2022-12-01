@@ -12,7 +12,7 @@ Quad::Quad(float width, float height) :
 
     blendState[0] = new BlendState();
     blendState[1] = new BlendState();
-    blendState[1]->Additive();
+    blendState[1]->Alpha(true);
 }
 
 Quad::~Quad()

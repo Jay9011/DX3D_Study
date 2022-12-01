@@ -45,7 +45,7 @@ Target* TargetManager::CollisionBullet()
 {
     for (Target* target : targets)
     {
-        if (BulletManager::Get()->Collision(target->GetCollider()))
+        if (BulletManager::Get()->Collision(target->GetCollider(), Bullet::ENEMY_BULLET))
         {
             return target;
         }
@@ -66,7 +66,7 @@ void TargetManager::Spawn()
         {
             if (!target->Active())
             {
-                target->isActive = true;
+                target->TurnActive();
 
                 Vector3 pos;
                 pos.x = Random(0.f, terrain->GetSize().x);
@@ -77,7 +77,7 @@ void TargetManager::Spawn()
                 pos.y = terrain->GetHeight(pos) + scale * 0.5f;
 
                 target->position = pos;
-                target->scale *= scale;
+                target->scale = { scale, scale, scale };
 
                 return;
             }

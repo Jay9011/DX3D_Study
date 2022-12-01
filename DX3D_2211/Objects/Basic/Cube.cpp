@@ -5,6 +5,7 @@ Cube::Cube(Vector3 size) :
 	size(size)
 {
 	material = new Material(L"Shaders/Texture.hlsl");
+	material->SetDiffuseMap(L"Textures/Landscape/Box.png");
 
 	CreateMesh();
 
